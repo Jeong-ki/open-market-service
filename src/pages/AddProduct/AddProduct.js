@@ -1,7 +1,7 @@
 import React from 'react';
 
-function CartPage() {
+function addProduct() {
   return <div></div>;
 }
 
-export default CartPage;
+export default addProduct;

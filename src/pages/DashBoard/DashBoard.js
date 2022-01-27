@@ -1,7 +1,7 @@
 import React from 'react';
 
-function CartPage() {
+function dashBoard() {
   return <div></div>;
 }
 
-export default CartPage;
+export default dashBoard;
