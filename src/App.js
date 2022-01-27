@@ -1,22 +1,22 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
-import ProductListPage from './pages/ProductListPage/ProductListPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
-import OrderPage from './pages/OrderPage/OrderPage';
-import DashBoard from './pages/DashBoard/DashBoard';
-import AddProduct from './pages/AddProduct/AddProduct';
+import Main from './pages/Main';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ProductDetail from './pages/ProductDetail';
+import Order from './pages/Order';
+import DashBoard from './pages/DashBoard';
+import AddProduct from './pages/AddProduct';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<ProductListPage />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/' element={<Main />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
       <Route path='/productDetail' element={<ProductDetail />} />
-      <Route path='/orderPage' element={<OrderPage />} />
+      <Route path='/order' element={<Order />} />
       <Route path='/dashBoard' element={<DashBoard />} />
       <Route path='/addProduct' element={<AddProduct />} />
     </Routes>
