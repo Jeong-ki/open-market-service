@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+.login {
+  text-align: center;
+  h1 {
+    margin: 100px 0 70px;
+    img {
+      //238px
+      // width: 12.39vw;
+      width: 238px;
+    }
+  }
+  section {
+    position: relative;
+    .loginChange {
+      position: relative;
+      padding: 20px 77px 30px;
+      border-top: 1px solid nth($gray, 2);
+      border-left: 1px solid nth($gray, 2);
+
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-family: $f5;
+      font-size: 18px;
+      background-color: nth($gray, 3);
+      &.sale {
+        border-right: 1px solid nth($gray, 2);
+      }
+      &.on {
+        background-color: #fff;
+        z-index: 10;
+      }
+    }
+    .loginForm {
+      position: relative;
+      bottom: 10px;
+      margin: 0 auto;
+      padding: 35px;
+      width: 550px;
+      border: 1px solid nth($gray, 2);
+      border-radius: 10px;
+      background-color: #fff;
+      box-sizing: border-box;
+      input {
+        display: block;
+        width: 100%;
+        padding: 20px 0;
+        border: none;
+        border-bottom: 1px solid nth($gray, 3);
+        &:last-child {
+          margin-bottom: 10px;
+        }
+      }
+      p {
+        margin-top: 26px;
+        text-align: left;
+        color: #eb5757;
+      }
+      button {
+        margin-top: 26px;
+        width: 100%;
+        padding: 19px 0;
+        background-color: $green;
+        color: #fff;
+        border-radius: 5px;
+        font-family: $f7;
+      }
+    }
+  }
+  .join {
+    margin: 30px 0 18.43vw;
+    span {
+      &:first-child:after {
+        content: "";
+        width: 2px;
+        height: 1em;
+        //14
+        margin: -2px 0.72vw;
+        background-color: #000;
+        display: inline-block;
+      }
+    }
+  }
+}

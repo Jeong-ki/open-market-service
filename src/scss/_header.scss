@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+//header
+.header {
+  @include flex($a: center, $j: flex-start);
+  padding: 22px $lrcont;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  h1 {
+    //30
+    margin-right: 1.56vw;
+    img {
+      height: 38px;
+    }
+  }
+  nav {
+    @include flex($a: center);
+    flex-grow: 1;
+    fieldset {
+      position: relative;
+
+      input {
+        //400
+        width: 20.83vw;
+        padding: 13px 0 13px 22px;
+        line-height: 1.25;
+        border-radius: 50px;
+        border: 2px solid $green;
+        box-sizing: border-box;
+        &:focus-visible {
+          border: 2px solid #1aa13c;
+          outline: none;
+        }
+      }
+      button {
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 50%;
+        right: 22px;
+        transform: translateY(-50%);
+        background: url($imgUrl + "search.png") no-repeat center center/contain;
+      }
+    }
+    ul {
+      @include flex;
+      font-size: 12px;
+      color: nth($gray, 1);
+      a {
+        display: block;
+      }
+      li.basket a {
+        &::before {
+          content: "";
+          display: block;
+          width: 32px;
+          height: 32px;
+          margin: 0 auto 4px;
+          background: url($imgUrl + "icon-shopping-cart.svg") center
+            center/contain;
+        }
+      }
+      li.login {
+        //26
+        margin-left: 1.35vw;
+        a {
+          &::before {
+            content: "";
+            display: block;
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 4px;
+            background: url($imgUrl + "icon-user.svg") center center/contain;
+          }
+        }
+      }
+    }
+  }
+}

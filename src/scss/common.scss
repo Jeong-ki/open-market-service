@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+@import "reset";
+
+@font-face {
+  font-family: "SpoqaHanSansNeo-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$gray: #767676, #c4c4c4, #f2f2f2;
+$green: #21bf48;
+$f7: "SpoqaHanSansNeo-Bold";
+$f5: "SpoqaHanSansNeo-Medium";
+$lrcont: 16.66vw;
+$imgUrl: "../images/";
+
+@mixin line {
+  background-color: floralwhite;
+  outline: 1px solid red;
+}
+@mixin flex($a: stretch, $j: space-between, $w: nowrap) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  flex-wrap: $w;
+}
+@mixin ir($bg) {
+  background: $bg;
+  span {
+    @extend .blind;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  font-family: "SpoqaHanSansNeo-Regular";
+}
+
+.product {
+  //359px -> 18.69
+  padding: 80px $lrcont 18.69vw;
+  article {
+    @include flex($a: center);
+    .imgBox {
+      width: 46%;
+      background-color: black;
+      &:after {
+        content: "";
+        padding-bottom: 100%;
+        display: block;
+      }
+    }
+    .explanation {
+      width: 49%;
+
+      .productIntro {
+        font-size: 18px;
+        border-bottom: 2px solid nth($gray, 2);
+        .company {
+          color: nth($gray, 1);
+          line-height: 1.22;
+        }
+        dl {
+          margin: 16px 0 20px;
+          dt {
+            font-size: 2em;
+            line-height: 1.25;
+            margin-bottom: 20px;
+          }
+          strong {
+            font-family: $f7;
+            font-size: 2em;
+            line-height: 1.25;
+            margin-right: 2px;
+          }
+        }
+        .delivery {
+          margin: 138px 0 20px;
+          color: nth($gray, 1);
+          font-size: 0.88em;
+        }
+      }
+    }
+  }
+}
+
+@import "header", "footer";
+@import "main", "login";
