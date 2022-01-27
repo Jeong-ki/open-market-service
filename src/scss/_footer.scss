@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+.footer {
+  background-color: nth($gray, 3);
+  padding: 0 $lrcont;
+  .topBar {
+    @include flex($a: center);
+    border-bottom: nth($gray, 2) solid 1px;
+    padding-top: 30px;
+  }
+  .list {
+    @include flex($a: center);
+    padding: 30px 0;
+    li {
+      font-size: 14px;
+      line-height: 1.25;
+      @include flex($a: center);
+      &::after {
+        content: "";
+        width: 2px;
+        height: 1em;
+        //14
+        margin: 0 0.72vw;
+        background-color: #000;
+        display: inline-block;
+        padding-bottom: 1px;
+      }
+      &:last-child:after {
+        display: none;
+      }
+      &:nth-child(3) {
+        font-family: $f7;
+      }
+    }
+  }
+
+  .sns {
+    @include flex($a: center);
+
+    a {
+      display: block;
+      width: 2em;
+      height: 2em;
+      border-radius: 50%;
+      background-color: nth($gray, 1);
+      span {
+        @extend .blind;
+      }
+    }
+    li {
+      &.instagram {
+        a {
+          background: url($imgUrl + "icon-insta.svg") no-repeat center
+            center/contain;
+        }
+      }
+      &.facebook {
+        //14
+        margin: 0 0.72vw;
+        a {
+          background: url($imgUrl + "icon-fb.svg") no-repeat center
+            center/contain;
+        }
+      }
+      &.youtube {
+        a {
+          background: url($imgUrl + "icon-yt.svg") no-repeat center
+            center/contain;
+        }
+      }
+    }
+  }
+
+  .information {
+    padding: 30px 0 63px;
+    font-size: 14px;
+    color: nth($gray, 1);
+    line-height: 1.7;
+    p:nth-child(1) {
+      font-family: $f7;
+    }
+    dl {
+      dt,
+      dd {
+        display: inline;
+      }
+    }
+  }
+}

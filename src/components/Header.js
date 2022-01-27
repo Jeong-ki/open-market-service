@@ -1,26 +1,28 @@
-import Logo from '../../images/Logo-hodu.png';
+import React from "react";
 
 function Header() {
   return (
-    // 16.66 vw  - 좌우 패딩(320/1920*100)
-    // 20(원하는픽셀) / 18(부모픽셀) em
-    <header> 
-      <h1><img src={Logo} alt="오픈 마켓" /></h1>
+    <header className="header">
+      <h1>
+        <a href="#">
+          <img src="./images/logo.png" alt="오픈마켓" />
+        </a>
+      </h1>
       <nav>
-        <div>
-          <form>
-            <label htmlFor="txt-search">상품 검색</label>
-            <input id="txt-search" type="search" placeholder='상품을 검색해보세요!' required />
-            <button type="submit" className="inp-btn">돋보기</button>
-          </form>
-        </div>
+        <form action="#" method="get">
+          <fieldset>
+            <legend className="blind">검색</legend>
+            <input type="search" placeholder="상품을 검색해보세요!" />
+            <button type="submit"></button>
+          </fieldset>
+        </form>
         <ul>
-          <li>
-            <a href="">
-              장바구니 before
-            </a>
+          <li className="basket">
+            <a href="/">장바구니</a>
           </li>
-          <li>로그인</li>
+          <li className="login">
+            <a href="/">로그인</a>
+          </li>
         </ul>
       </nav>
     </header>
