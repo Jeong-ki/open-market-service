@@ -1,5 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
+import minus from "../images/icon-minus-line.svg";
+import plus from "../images/icon-plus-line.svg";
 function ProductDetailPage() {
   return (
     <>
@@ -20,31 +22,39 @@ function ProductDetailPage() {
               </dl>
               <p className="delivery">택배배송 / 무료배송</p>
             </div>
-            <div>
-              <h3>상품 수량 설정</h3>
-              <span>-</span>
-              <span>1</span>
-              <span>+</span>
-            </div>
-            <div>
-              <p>총 상품 금액</p>
+            <div className="amount">
+              <h3 className="blind">상품 수량 설정</h3>
               <div>
-                <p>
+                <button type="button" className="symbol">
+                  <img src={minus} alt="minus" />
+                </button>
+                <span className="volume">1</span>
+                <button type="button" className="symbol">
+                  <img src={plus} alt="plus" />
+                </button>
+              </div>
+            </div>
+            <div className="price">
+              <p className="maximum">총 상품 금액</p>
+              <div>
+                <p className="maximumAmount">
                   총 수량 <strong>1</strong>개
                 </p>
-                <p>
+                <p className="maximumPrice">
                   <strong>17,500</strong>원
                 </p>
               </div>
-              <button>바로 구매</button>
-              <button>장바구니</button>
+            </div>
+            <div className="purchase">
+              <button className="rightAway">바로 구매</button>
+              <button className="basket">장바구니</button>
             </div>
           </div>
         </article>
 
-        <ul>
+        <ul className="btnList">
           <li>
-            <button>버튼</button>
+            <button className="on">버튼</button>
           </li>
           <li>
             <button>리뷰</button>

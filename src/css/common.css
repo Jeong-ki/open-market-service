@@ -85,6 +85,9 @@ button {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 .blind, .event ul.slide a span, .footer .sns a span,
@@ -273,6 +276,7 @@ body {
   background: url("../images/icon-yt.svg") no-repeat center center/contain;
 }
 .footer .information {
+  text-align: left;
   padding: 30px 0 63px;
   font-size: 14px;
   color: #767676;
@@ -332,45 +336,48 @@ body {
   background: #000;
 }
 
-.product .inner {
+.products {
+  text-align: left;
+}
+.products .inner {
   margin: 0 16.66vw;
 }
-.product ul {
+.products ul {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
   flex-wrap: wrap;
   margin: 80px 0 102px;
 }
-.product ul li {
+.products ul li {
   width: calc((100% - 7.29vw) / 3);
   margin-bottom: 78px;
 }
-.product ul li:nth-child(3n+2) {
+.products ul li:nth-child(3n+2) {
   margin: 0 3.645vw;
 }
-.product ul li div {
+.products ul li div {
   background: rgba(180, 178, 178, 0.356);
   border-radius: 10px;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
 }
-.product ul li div:after {
+.products ul li div:after {
   content: "";
   padding-bottom: 100%;
   display: block;
 }
-.product ul li p {
+.products ul li p {
   line-height: 1.25;
   color: #767676;
   margin: 16px 0 10px;
 }
-.product ul li dt {
+.products ul li dt {
   font-size: 1.125em;
   line-height: 1.22;
   margin-bottom: 10px;
 }
-.product ul li dd strong {
+.products ul li dd strong {
   font-size: 1.5em;
   line-height: 1.25;
   margin-right: 2px;
@@ -455,51 +462,158 @@ body {
 
 .product {
   padding: 80px 16.66vw 18.69vw;
+  font-size: 0.93vw;
 }
 .product article {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
   flex-wrap: nowrap;
 }
 .product article .imgBox {
-  width: 46%;
+  width: 31.25vw;
+  height: 31.25vw;
   background-color: black;
 }
-.product article .imgBox:after {
-  content: "";
-  padding-bottom: 100%;
-  display: block;
-}
 .product article .explanation {
-  width: 49%;
-}
-.product article .explanation .productIntro {
-  font-size: 18px;
-  border-bottom: 2px solid #c4c4c4;
+  width: 32.81vw;
 }
 .product article .explanation .productIntro .company {
   color: #767676;
   line-height: 1.22;
 }
 .product article .explanation .productIntro dl {
-  margin: 16px 0 20px;
+  margin: 0.88em 0 1.11em;
 }
 .product article .explanation .productIntro dl dt {
   font-size: 2em;
   line-height: 1.25;
-  margin-bottom: 20px;
+  margin-bottom: 0.55em;
 }
 .product article .explanation .productIntro dl strong {
   font-family: "SpoqaHanSansNeo-Bold";
   font-size: 2em;
   line-height: 1.25;
-  margin-right: 2px;
+  margin-right: 0.055em;
 }
 .product article .explanation .productIntro .delivery {
-  margin: 138px 0 20px;
-  color: #767676;
   font-size: 0.88em;
+  margin: 8.625em 0 1.25em;
+  color: #767676;
+}
+.product article .explanation .amount {
+  padding: 1.66em 0;
+  border-top: 2px solid #c4c4c4;
+  border-bottom: 2px solid #c4c4c4;
+}
+.product article .explanation .amount div {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  display: inline-block;
+}
+.product article .explanation .amount div .symbol {
+  padding: 0.83em 0.77em;
+}
+.product article .explanation .amount div .symbol img {
+  width: 1.11em;
+}
+.product article .explanation .amount div .symbol:first-child {
+  border-right: 1px solid #c4c4c4;
+}
+.product article .explanation .amount div .symbol:last-child {
+  border-left: 1px solid #c4c4c4;
+}
+.product article .explanation .amount div .volume {
+  padding: 0 1.11em;
+  line-height: 1.25;
+}
+.product article .explanation .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 1.77em 0 1.22em;
+}
+.product article .explanation .price .maximum {
+  font-family: "SpoqaHanSansNeo-Medium";
+  line-height: 1.25;
+}
+.product article .explanation .price div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.product article .explanation .price div .maximumAmount {
+  color: #767676;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.product article .explanation .price div .maximumAmount::after {
+  content: "";
+  width: 1px;
+  height: 1.27em;
+  display: inline-block;
+  background-color: #c4c4c4;
+  margin: 0 11px;
+}
+.product article .explanation .price div .maximumAmount strong {
+  font-family: "SpoqaHanSansNeo-Bold";
+  color: #21bf48;
+  padding: 0 3px;
+}
+.product article .explanation .price div .maximumPrice {
+  color: #21bf48;
+}
+.product article .explanation .price div .maximumPrice strong {
+  font-family: "SpoqaHanSansNeo-Bold";
+  font-size: 2em;
+  line-height: 1.25;
+  margin-right: 0.055em;
+}
+.product article .explanation .purchase {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-family: "SpoqaHanSansNeo-Bold";
+  color: #fff;
+}
+.product article .explanation .purchase button {
+  padding: 1.05em 0;
+  border-radius: 5px;
+}
+.product article .explanation .purchase .rightAway {
+  width: 66%;
+  background-color: #21bf48;
+}
+.product article .explanation .purchase .basket {
+  width: 31%;
+  background-color: #767676;
+}
+.product .btnList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+  margin: 7.29vw 0 18.69vw;
+}
+.product .btnList li {
+  width: 25%;
+}
+.product .btnList button {
+  padding: 1.1em 0 1em;
+  width: 100%;
+  font-family: "SpoqaHanSansNeo-Medium";
+  color: #767676;
+  border-bottom: 0.33em solid #e0e0e0;
+}
+.product .btnList button.on {
+  color: #21bf48;
+  border-bottom: 0.33em solid #21bf48;
 }
 
 /*# sourceMappingURL=common.css.map */

@@ -1,10 +1,10 @@
 import React from "react";
-
+import logo from "../images/logo.png";
 function login() {
   return (
     <div className="login">
       <h1>
-        <img src="./images/logo.png" alt="오픈마켓" />
+        <img src={logo} alt="오픈마켓" />
       </h1>
       <section>
         <h2 className="blind">로그인</h2>
