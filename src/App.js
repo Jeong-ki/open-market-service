@@ -1,11 +1,15 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from "react-router-dom";
+import ProductListPage from './pages/ProductListPage/ProductListPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
   return (
-    <div className="App">
-      gogo
-    </div>
+    <Routes>
+      <Route path='/' element={<ProductListPage />} />
+      <Route path='/login' element={<LoginPage />} />
+    </Routes>
   );
 }
 
