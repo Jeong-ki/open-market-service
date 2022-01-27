@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+.register {
+  text-align: center;
+  h1 {
+    margin:70px 0 70px;
+    img {
+      width: 238px;
+    }
+  }
+  section {
+    .changeReg {
+      padding: 20px 0 30px;
+      width: 275px;
+      border: 1px solid nth($gray, 2);
+      // border-left: 1px solid nth($gray, 2);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-family: $f5;
+      font-size: 18px;
+      &.buyer {
+        background-color: #fff;
+        border-bottom: none;
+        // z-index: 10;
+      }
+      &.seller {
+        background-color: nth($gray, 3);
+      }
+    }
+    .registerForm {
+      position: relative;
+      bottom: 10px;
+      margin: 0 auto;
+      padding: 0 35px;
+      width: 477.51px;
+      border: 1px solid nth($gray, 2);
+      border-top: none;
+      
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      label {
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+        color: nth($gray, 1);
+        &.id {
+          margin-top: 50px;
+        }
+      }
+      input:focus {
+        outline: none;
+      }
+      input {
+        padding: 0;
+        padding-left: 16px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid nth($gray, 2);
+        height: 51.5px;
+        margin-bottom: 12px;
+        &:focus, &:active {
+          border-color: nth($green, 1);
+        }
+        &#id {
+          width: 327.5px;
+          margin-right: 12px;
+        }
+        &#pw, &#checkPw, &#name {
+          width: 461.5px;
+        }
+        &#checkPw {
+          margin-bottom: 50px;
+        }
+      }
+      .inpPw {
+        position: relative;
+      }
+      img {
+        position: absolute;
+        right: 16px;
+        top: 13px;
+      }
+      button {
+        color: #fff;
+        background-color: nth($green, 1);
+        width: 122px;
+        height: 54px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .phoneNumber {
+        input {
+          width: 133.5px;
+        }
+        #middleNumber {
+          margin: 0 12px;
+        }
+        #firstNumber {
+          width: 152px;
+          height: 54px;
+          border-radius: 5px;
+          border: 1px solid nth($gray, 2);
+        }
+      }
+      
+      .email {
+        input {
+          width: 201.5px;
+        }
+        span {
+          margin: 0 11px;
+        }
+      }
+    }
+    
+  }
+}
