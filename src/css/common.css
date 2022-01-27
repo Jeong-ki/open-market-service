@@ -129,55 +129,6 @@ body {
   font-family: "SpoqaHanSansNeo-Regular";
 }
 
-.product {
-  padding: 80px 16.66vw 18.69vw;
-}
-.product article {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-.product article .imgBox {
-  width: 46%;
-  background-color: black;
-}
-.product article .imgBox:after {
-  content: "";
-  padding-bottom: 100%;
-  display: block;
-}
-.product article .explanation {
-  width: 49%;
-}
-.product article .explanation .productIntro {
-  font-size: 18px;
-  border-bottom: 2px solid #c4c4c4;
-}
-.product article .explanation .productIntro .company {
-  color: #767676;
-  line-height: 1.22;
-}
-.product article .explanation .productIntro dl {
-  margin: 16px 0 20px;
-}
-.product article .explanation .productIntro dl dt {
-  font-size: 2em;
-  line-height: 1.25;
-  margin-bottom: 20px;
-}
-.product article .explanation .productIntro dl strong {
-  font-family: "SpoqaHanSansNeo-Bold";
-  font-size: 2em;
-  line-height: 1.25;
-  margin-right: 2px;
-}
-.product article .explanation .productIntro .delivery {
-  margin: 138px 0 20px;
-  color: #767676;
-  font-size: 0.88em;
-}
-
 .header {
   display: flex;
   justify-content: flex-start;
@@ -500,6 +451,55 @@ body {
   margin: -2px 0.72vw;
   background-color: #000;
   display: inline-block;
+}
+
+.product {
+  padding: 80px 16.66vw 18.69vw;
+}
+.product article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.product article .imgBox {
+  width: 46%;
+  background-color: black;
+}
+.product article .imgBox:after {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+.product article .explanation {
+  width: 49%;
+}
+.product article .explanation .productIntro {
+  font-size: 18px;
+  border-bottom: 2px solid #c4c4c4;
+}
+.product article .explanation .productIntro .company {
+  color: #767676;
+  line-height: 1.22;
+}
+.product article .explanation .productIntro dl {
+  margin: 16px 0 20px;
+}
+.product article .explanation .productIntro dl dt {
+  font-size: 2em;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.product article .explanation .productIntro dl strong {
+  font-family: "SpoqaHanSansNeo-Bold";
+  font-size: 2em;
+  line-height: 1.25;
+  margin-right: 2px;
+}
+.product article .explanation .productIntro .delivery {
+  margin: 138px 0 20px;
+  color: #767676;
+  font-size: 0.88em;
 }
 
 /*# sourceMappingURL=common.css.map */

@@ -56,53 +56,8 @@ body {
   font-family: "SpoqaHanSansNeo-Regular";
 }
 
-.product {
-  //359px -> 18.69
-  padding: 80px $lrcont 18.69vw;
-  article {
-    @include flex($a: center);
-    .imgBox {
-      width: 46%;
-      background-color: black;
-      &:after {
-        content: "";
-        padding-bottom: 100%;
-        display: block;
-      }
-    }
-    .explanation {
-      width: 49%;
-
-      .productIntro {
-        font-size: 18px;
-        border-bottom: 2px solid nth($gray, 2);
-        .company {
-          color: nth($gray, 1);
-          line-height: 1.22;
-        }
-        dl {
-          margin: 16px 0 20px;
-          dt {
-            font-size: 2em;
-            line-height: 1.25;
-            margin-bottom: 20px;
-          }
-          strong {
-            font-family: $f7;
-            font-size: 2em;
-            line-height: 1.25;
-            margin-right: 2px;
-          }
-        }
-        .delivery {
-          margin: 138px 0 20px;
-          color: nth($gray, 1);
-          font-size: 0.88em;
-        }
-      }
-    }
-  }
-}
-
 @import "header", "footer";
-@import "main", "login";
+
+// 순상
+@import "main", "login", "product";
+// 기수
