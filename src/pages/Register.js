@@ -15,7 +15,7 @@ function RegisterPage() {
       <div className="registerForm">
         <form id="register">
           <fieldset>
-            <legend>구매회원가입</legend>
+            <legend>회원가입</legend>
 
             <div className='inpId'>
               <label htmlFor="id" className="id">아이디</label>
@@ -38,16 +38,17 @@ function RegisterPage() {
             <label htmlFor="name">이름</label>
             <input id="name" type="text" />
 
-            <div className='phoneNumber'>  
-              <label htmlFor="firstNumber">전화번호</label>
-              <select id="firstNumber">
-                <option value="010">010</option>
-                <option value="011">011</option>
-                <option value="016">016</option>
-                <option value="017">017</option>
-                <option value="018">018</option>
-                <option value="019">019</option>
-              </select>
+            <label>전화번호</label>
+            <div className='phoneNumber'>
+              <button className='firstNumBtn'>010</button>
+              <ul id="firstNumber">
+                <li><button type="button">010</button></li>
+                <li><button type="button">011</button></li>
+                <li><button type="button">016</button></li>
+                <li><button type="button">017</button></li>
+                <li><button type="button">018</button></li>
+                <li><button type="button">019</button></li>
+              </ul>
               <label htmlFor="middleNumber" className="blind">중간 전화번호</label>
               <input id="middleNumber" type="text" />
               <label htmlFor="lastNumber" className="blind">뒷 전화번호</label>
@@ -62,14 +63,23 @@ function RegisterPage() {
               <input id="dotcom" type="text" />
             </div>
 
+            <div className='buyerNum'>
+              <label htmlFor="bNum">사업자 등록번호</label>
+              <input id="bNum" type="text" />
+              <button type='button'>인증</button>
+            </div>
+            <label htmlFor="storeName">스토어 이름</label>
+            <input id="storeName" type="text" />
           </fieldset>
         </form>
       </div>
-      <div>
-        <input type="checkbox" id="agree" />
-        <label htmlFor="agree">호두샵의 <strong>이용약관</strong> 및 <strong>개인정보처리방침</strong>에 대한 내용을 확인하였고 동의합니다.</label>
+      <div className='box-check'>
+        <div className="check-agree">
+          <input type="checkbox" id="agree" />
+          <label htmlFor="agree">호두샵의 <strong>이용약관</strong> 및 <strong>개인정보처리방침</strong>에 대한 내용을 확인하였고 동의합니다.</label>
+        </div>
       </div>
-      <button type="submit" form="register">가입하기</button>
+      <button className="submitBtn" type="submit" form="register">가입하기</button>
     </section>
   </div>
   );
