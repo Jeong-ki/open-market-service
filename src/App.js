@@ -9,12 +9,14 @@ import Order from "./pages/Order";
 import DashBoard from "./pages/DashBoard";
 import AddProduct from "./pages/AddProduct";
 import Error from "./pages/Error";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/register" element={<Register />} />
       <Route path="/productDetail" element={<ProductDetail />} />
       <Route path="/order" element={<Order />} />
