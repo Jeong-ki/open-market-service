@@ -1,18 +1,11 @@
 import React from 'react';
-import logo from "../images/logo.png";
+import DashHeader from '../components/DashHeader';
 
 function dashBoard() {
   return (
-    <div className="dashBoard">
-      <header>
-        <h1>
-          <a href="/">
-            <img src={logo} alt="오픈마켓" />
-          </a>
-        </h1>
-        판매자 센터
-      </header>
-      <section>
+    <>
+      <DashHeader />
+      <section className="dashBoard">
         <h2>대시보드 <strong>백엔드글로벌</strong></h2>
         <button><span></span>상품업로드</button>
         <ul>
@@ -44,7 +37,7 @@ function dashBoard() {
           </ul>
         </article>
       </section>
-    </div>
+    </>
   );
 }
 
