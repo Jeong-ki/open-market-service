@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.cart {
+  font-size: 0.93vw;
+  text-align: center;
+  padding: 0 $lrcont;
+  h2 {
+    margin: 3em 0 2.88em;
+    font-size: 2em;
+    font-family: $f7;
+  }
+  .contProduct {
+    .tableHead {
+      background-color: #f2f2f2;
+      @include flex($a: center);
+      padding: 1em 0;
+      li {
+        span {
+          width: 1.11em;
+          height: 1.11em;
+          display: block;
+          border-radius: 50%;
+          border: 2px solid $green;
+        }
+      }
+    }
+  }
+}
