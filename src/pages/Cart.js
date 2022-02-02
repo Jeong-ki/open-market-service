@@ -8,28 +8,34 @@ function CartPage() {
   return (
     <>
       <Header />
-      <section>
+      <section className="cart">
         <h2>장바구니</h2>
-        <div>
-          <ul>
-            <li>ㅇ</li>
+        <div className="contProduct">
+          <ul className="tableHead">
+            <li>
+              <span></span>
+            </li>
             <li>상품정보</li>
             <li>수량</li>
             <li>상품금액</li>
           </ul>
-          <article>
+          <article className="tableBody">
             <h3 className="blind">장바구니 상품 목록</h3>
-            <div>
-              <p>장바구니 안에 담긴 상품이 없습니다.</p>
+            <div className="noneProduct">
+              <p>
+                <strong>장바구니 안에 담긴 상품이 없습니다.</strong>
+              </p>
               <p>원하는 상품을 장바구니에 담아보세요</p>
             </div>
-            <div>
+            <div className="Product">
               <form action="#" method="get">
                 <ul>
                   <li>
-                    <input type="checkbox" />
+                    <label>
+                      <input type="checkbox" />
+                    </label>
                     <img src={test} alt="상품이미지" />
-                    <div>
+                    <div className="introduce">
                       <p className="company">백엔드글로벌</p>
                       <dl>
                         <dt>딥러닝 개발자 무릎 담요</dt>
@@ -40,7 +46,7 @@ function CartPage() {
                       <p className="delivery">택배배송 / 무료배송</p>
                     </div>
 
-                    <div>
+                    <div className="quantity">
                       <button type="button" className="symbol">
                         <img src={minus} alt="minus" />
                       </button>
@@ -49,40 +55,45 @@ function CartPage() {
                         <img src={plus} alt="plus" />
                       </button>
                     </div>
-                    <p>17,500원</p>
-                    <button type="button">주문하기</button>
-                    <button>
+
+                    <p className="orderPrice">17,500원</p>
+                    <button type="button" className="orderBtn">
+                      주문하기
+                    </button>
+                    <button type="button" className="cancel">
                       <img src={remove} alt="상품 취소" />
                     </button>
                   </li>
                 </ul>
-                <div>
-                  <dl>
+                <div className="confirm">
+                  <dl className="total">
                     <dt>총상품금액</dt>
                     <dd>
                       <strong>46,500</strong>원
                     </dd>
                   </dl>
-                  <dl>
+                  <dl className="cale">
                     <dt>상품 할인</dt>
                     <dd>
                       <strong>0</strong>원
                     </dd>
                   </dl>
-                  <dl>
+                  <dl className="deliveryFee">
                     <dt>배송비</dt>
                     <dd>
                       <strong>0</strong>원
                     </dd>
                   </dl>
-                  <dl>
+                  <dl className="payment">
                     <dt>결제 예정 금액</dt>
                     <dd>
                       <strong>46,500</strong>원
                     </dd>
                   </dl>
                 </div>
-                <button type="submit">주문하기</button>
+                <button type="submit" className="submit">
+                  주문하기
+                </button>
               </form>
             </div>
           </article>
