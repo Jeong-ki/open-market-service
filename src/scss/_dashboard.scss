@@ -2,56 +2,56 @@
 
 .dashBoard {
   position: relative;
-  padding: 0 6.9444vw;
+  padding: 0 5.2083vw;
   h2 {
     font-family: $f7;
-    font-size: 2.5vw;
-    margin-top: 3.0556vw;
-    margin-bottom: 2.9167vw;
+    font-size: 1.875vw;
+    margin-top: 2.2917vw;
+    margin-bottom: 2.1875vw;
   }
   strong {
     font-family: $f5;
     color: $green;
-    margin-left: 1.1111vw;
+    margin-left: 0.8333vw;
   }
   .uploadBtn {
     position: absolute;
     top: 0;
-    right: 6.9444vw;
-    font-size: 1.25vw;
+    right: 5.2083vw;
+    font-size: 0.9375vw;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     background-color: $green;
-    width: 11.6667vw;
-    height: 3.6111vw;
+    width: 8.75vw;
+    height: 2.7083vw;
     border-radius: 5px;
     &::before {
       content: "";
       display: inline-block;
       background-image: url(../images/icon-plus.svg);
       background-size: contain;
-      width: 2.0833vw;
-      height: 2.0833vw;
-      margin-right: 0.625vw;
+      width: 1.5625vw;
+      height: 1.5625vw;
+      margin-right: 0.4688vw;
     }
   }
   .wrap {
     display: flex;
   }
   .menu {
-    margin-right: 2.0833vw;
+    margin-right: 1.5625vw;
     li {
       display: flex;
       align-items: center;
-      padding-left: 1.3889vw;
-      font-size: 1.1111vw;
+      padding-left: 1.0417vw;
+      font-size: 0.8333vw;
       position: relative;
       border-radius: 5px;
-      width: 15.9722vw;
-      height: 3.4722vw;
-      margin-bottom: 0.6944vw;
+      width: 11.9792vw;
+      height: 2.6042vw;
+      margin-bottom: 0.5208vw;
       // 클릭됐을때의 스타일
       &:first-child {
         color: #fff;
@@ -62,14 +62,14 @@
       }
       span {
         position: absolute;
-        right: 1.0417vw;
+        right: 0.7813vw;
         display: inline-block;
         background-color: #eb5757;
         color: #fff;
-        font-size: 0.8333vw;
+        font-size: 0.625vw;
         border-radius: 90px;
         text-align: center;
-        padding: 2px 6px;
+        padding: 0.1042vw 0.3125vw;
       }
     }
   }
@@ -81,7 +81,7 @@
     .productInfo {
       display: flex;
       li {
-        font-size: 1.25vw;
+        font-size: 0.9375vw;
         text-align: center;
         padding: 18px 0;
         background-color: #fff;
@@ -113,17 +113,17 @@
             border: 1px solid black;
             border-radius: 100px;
             float: left;
-            width: 4.8611vw;
+            width: 3.6458vw;
             margin: 16px 30px;
           }
           p:nth-child(2) {
-            font-size: 1.25vw;
-            margin-top: 1.8056vw;
+            font-size: 0.9375vw;
+            margin-top: 1.3542vw;
           }
           p:nth-child(3) {
-            font-size: 1.1111vw;
+            font-size: 0.8333vw;
             color: nth($gray, 1);
-            margin: 0.6944vw 0 1.8056vw;
+            margin: 0.5208vw 0 1.3542vw;
           }
         }
         .price,
@@ -131,13 +131,13 @@
           @include flex($a: center, $j: center);
         }
         .price {
-          font-size: 1.25vw;
+          font-size: 0.9375vw;
           flex: 3 1 0;
         }
         button {
-          font-size: 1.1111vw;
-          width: 5.5556vw;
-          height: 2.7778vw;
+          font-size: 0.8333vw;
+          width: 4.1667vw;
+          height: 2.0833vw;
           border-radius: 5px;
           padding: 0;
         }
