@@ -15,12 +15,65 @@
       @include flex($a: center);
       padding: 1em 0;
       li {
+        flex-basis: 25%;
         span {
           width: 1.11em;
           height: 1.11em;
           display: block;
           border-radius: 50%;
           border: 2px solid $green;
+          margin: 0 auto;
+        }
+        &:nth-child(1) {
+          flex-basis: 10%;
+        }
+        &:nth-child(2) {
+          flex-basis: 40%;
+        }
+      }
+    }
+    .tableBody {
+      .noneProduct {
+        margin: 11.11em 0 24.55em;
+        p {
+          font-size: 0.77em;
+          color: nth($gray, 1);
+        }
+        strong {
+          display: block;
+          font-family: $f7;
+          font-size: 0.93vw;
+          margin-bottom: 1em;
+          color: black;
+        }
+      }
+      .product {
+        li {
+          @include flex($a: center);
+          label {
+            div {
+              width: 1.11em;
+              height: 1.11em;
+              border-radius: 50%;
+              border: 2px solid $green;
+              margin: 0 auto;
+              @include flex($a: center);
+            }
+            input:checked + div > span {
+              background-color: green;
+              display: block;
+              width: 0.89em;
+              height: 0.89em;
+              border-radius: 50%;
+            }
+          }
+          img {
+            width: 8.88em;
+            height: 8.88em;
+            max-width: 160px;
+            max-height: 160px;
+            border-radius: 10px;
+          }
         }
       }
     }
