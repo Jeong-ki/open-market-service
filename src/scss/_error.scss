@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.error {
+  @include flex($a: center, $j: center);
+  height: 100vh;
+  h1 {
+    margin-right: 2.6042vw;
+    img {
+      width: 14.375vw;
+      height: 12.2917vw;
+    }
+  }
+  .introduce {
+    .strong {
+      font-family: $f7;
+      font-size: 1.875vw;
+      margin-bottom: 1.0417vw;
+    }
+    .small {
+      font-size: 0.8333vw;
+      color: nth($gray, 1);
+    }
+    .button {
+      display: flex;
+      margin-top: 2.0833vw;
+      a {
+        @include flex($a: center, $j: center);
+        font-size: 0.9375vw;
+        width: 10.4167vw;
+        height: 3.125vw;
+        border-radius: 5px;
+        &:nth-child(1) {
+          color: #fff;
+          background-color: $green;
+          margin-right: 0.5208vw;
+        }
+        &:nth-child(2) {
+          border: 1px solid nth($gray, 2);
+          color: nth($gray, 1);
+        }
+      }
+    }
+  }
+}

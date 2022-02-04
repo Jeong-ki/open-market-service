@@ -3,7 +3,7 @@
 //header
 .header {
   @include flex($a: center, $j: flex-start);
-  padding: 22px $lrcont;
+  padding: 22px 100px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
   h1 {
     //30

@@ -1,0 +1,169 @@
+@charset "utf-8";
+
+.dashBoard {
+  position: relative;
+  padding: 0 5.2083vw;
+  h2 {
+    font-family: $f7;
+    font-size: 1.875vw;
+    margin-top: 2.2917vw;
+    margin-bottom: 2.1875vw;
+  }
+  strong {
+    font-family: $f5;
+    color: $green;
+    margin-left: 0.8333vw;
+  }
+  .uploadBtn {
+    position: absolute;
+    top: 0;
+    right: 5.2083vw;
+    font-size: 0.9375vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: $green;
+    width: 8.75vw;
+    height: 2.7083vw;
+    border-radius: 5px;
+    &::before {
+      content: "";
+      display: inline-block;
+      background-image: url(../images/icon-plus.svg);
+      background-size: contain;
+      width: 1.5625vw;
+      height: 1.5625vw;
+      margin-right: 0.4688vw;
+    }
+  }
+  .wrap {
+    display: flex;
+  }
+  .menu {
+    margin-right: 1.5625vw;
+    li {
+      display: flex;
+      align-items: center;
+      padding-left: 1.0417vw;
+      font-size: 0.8333vw;
+      position: relative;
+      border-radius: 5px;
+      width: 11.9792vw;
+      height: 2.6042vw;
+      margin-bottom: 0.5208vw;
+      // 클릭됐을때의 스타일
+      &:first-child {
+        color: #fff;
+        background-color: $green;
+      }
+      &:hover {
+        background-color: #effff3;
+      }
+      span {
+        position: absolute;
+        right: 0.7813vw;
+        display: inline-block;
+        background-color: #eb5757;
+        color: #fff;
+        font-size: 0.625vw;
+        border-radius: 90px;
+        text-align: center;
+        padding: 0.1042vw 0.3125vw;
+      }
+    }
+  }
+  article {
+    width: 100%;
+    background-color: nth($gray, 3);
+    border: 1px solid nth($gray, 2);
+    border-radius: 5px;
+    .productInfo {
+      display: flex;
+      li {
+        font-size: 0.9375vw;
+        text-align: center;
+        padding: 18px 0;
+        background-color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        &:nth-child(1) {
+          flex: 5 1 0;
+        }
+        &:nth-child(2) {
+          flex: 3 1 0;
+        }
+        &:nth-child(3) {
+          flex: 1 1 0;
+        }
+        &:nth-child(4) {
+          flex: 1 1 0;
+        }
+      }
+    }
+    .products {
+      li {
+        display: flex;
+        border-top: 1px solid nth($gray, 2);
+        border-bottom: 1px solid nth($gray, 2);
+        background-color: #fff;
+        div {
+          flex: 5 1 0;
+          img {
+            border: 1px solid black;
+            border-radius: 100px;
+            float: left;
+            width: 3.6458vw;
+            margin: 16px 30px;
+          }
+          p:nth-child(2) {
+            font-size: 0.9375vw;
+            margin-top: 1.3542vw;
+          }
+          p:nth-child(3) {
+            font-size: 0.8333vw;
+            color: nth($gray, 1);
+            margin: 0.5208vw 0 1.3542vw;
+          }
+        }
+        .price,
+        .box-btn {
+          @include flex($a: center, $j: center);
+        }
+        .price {
+          font-size: 0.9375vw;
+          flex: 3 1 0;
+        }
+        button {
+          font-size: 0.8333vw;
+          width: 4.1667vw;
+          height: 2.0833vw;
+          border-radius: 5px;
+          padding: 0;
+        }
+        .box-update,
+        .box-delete {
+          @include flex($a: center, $j: center);
+          flex: 1 1 0;
+        }
+        .box-update {
+          button {
+            background-color: $green;
+            color: #fff;
+          }
+        }
+        .box-delete {
+          button {
+            background-color: #fff;
+            color: nth($gray, 1);
+            border: solid 1px nth($gray, 2);
+            &:hover {
+              color: #000;
+              border-color: nth($gray, 1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
