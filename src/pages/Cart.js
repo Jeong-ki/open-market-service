@@ -19,20 +19,24 @@ function CartPage() {
             <li>수량</li>
             <li>상품금액</li>
           </ul>
+
           <article className="tableBody">
             <h3 className="blind">장바구니 상품 목록</h3>
-            <div className="noneProduct">
+            <div className="noneProduct hide">
               <p>
                 <strong>장바구니 안에 담긴 상품이 없습니다.</strong>
               </p>
               <p>원하는 상품을 장바구니에 담아보세요</p>
             </div>
-            <div className="Product">
+            <div className="product">
               <form action="#" method="get">
                 <ul>
                   <li>
                     <label>
-                      <input type="checkbox" />
+                      <input type="checkbox" className="hide" />
+                      <div>
+                        <span></span>
+                      </div>
                     </label>
                     <img src={test} alt="상품이미지" />
                     <div className="introduce">
