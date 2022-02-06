@@ -16,6 +16,7 @@ dd,
 ul,
 ol,
 li,
+button,
 blockquote,
 fieldset {
   margin: 0;
@@ -665,36 +666,183 @@ body {
   margin-bottom: 1em;
   color: black;
 }
-.cart .contProduct .tableBody .product li {
+.cart .contProduct .tableBody .showProduct ul {
+  margin: 1.94em 0 4.45em;
+}
+.cart .contProduct .tableBody .showProduct li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
+  border: 1.5px solid #e0e0e0;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 0.55em;
 }
-.cart .contProduct .tableBody .product li label div {
+.cart .contProduct .tableBody .showProduct li label {
+  flex-basis: 10%;
+}
+.cart .contProduct .tableBody .showProduct li label div {
   width: 1.11em;
   height: 1.11em;
   border-radius: 50%;
   border: 2px solid #21bf48;
   margin: 0 auto;
+  padding: 0.1em;
+  position: relative;
+}
+.cart .contProduct .tableBody .showProduct li label input:checked + div > span {
+  background-color: #21bf48;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+.cart .contProduct .tableBody .showProduct li .introduce {
+  flex-grow: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
 }
-.cart .contProduct .tableBody .product li label input:checked + div > span {
-  background-color: green;
-  display: block;
-  width: 0.89em;
-  height: 0.89em;
-  border-radius: 50%;
-}
-.cart .contProduct .tableBody .product li img {
+.cart .contProduct .tableBody .showProduct li .introduce img {
   width: 8.88em;
   height: 8.88em;
   max-width: 160px;
   max-height: 160px;
   border-radius: 10px;
+  background-color: floralwhite;
+  outline: 1px solid red;
+  margin: 1.11em 0;
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText {
+  text-align: left;
+  margin-left: 2em;
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText .company {
+  font-size: 0.77em;
+  color: #767676;
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText dl {
+  margin: 0.55em 0 2.22em;
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText dl dt {
+  margin-bottom: 0.55em;
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText dl dd {
+  font-size: 0.88em;
+  font-family: "SpoqaHanSansNeo-Bold";
+}
+.cart .contProduct .tableBody .showProduct li .introduce .introduceText .delivery {
+  font-size: 0.77em;
+  color: #767676;
+}
+.cart .contProduct .tableBody .showProduct li .quantity {
+  flex-basis: 25%;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  display: inline-block;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div .symbol {
+  padding: 0.83em 0.77em;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div .symbol img {
+  width: 1.11em;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div .symbol:first-child {
+  border-right: 1px solid #c4c4c4;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div .symbol:last-child {
+  border-left: 1px solid #c4c4c4;
+}
+.cart .contProduct .tableBody .showProduct li .quantity div .volume {
+  padding: 0 1.11em;
+  line-height: 1.25;
+}
+.cart .contProduct .tableBody .showProduct li .orderPrice {
+  flex-basis: 25%;
+}
+.cart .contProduct .tableBody .showProduct li .orderPrice p {
+  color: #eb5757;
+  font-family: "SpoqaHanSansNeo-Bold";
+  margin-bottom: 1.44em;
+}
+.cart .contProduct .tableBody .showProduct li .orderPrice .orderBtn {
+  font-size: 0.88em;
+  font-family: "SpoqaHanSansNeo-Medium";
+  border-radius: 5px;
+  padding: 0.625em 2.225em;
+  background-color: #21bf48;
+  color: #fff;
+}
+.cart .contProduct .tableBody .showProduct li .cancel {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+.cart .contProduct .tableBody .showProduct li .cancel img {
+  width: 1.22em;
+  margin-bottom: 1.44em;
+}
+.cart .contProduct .tableBody .showProduct .confirm {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 2.55em 5.05em 2.55em 6.22em;
+  margin-bottom: 2.22em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.cart .contProduct .tableBody .showProduct .confirm dl {
+  font-size: 0.88em;
+}
+.cart .contProduct .tableBody .showProduct .confirm dl dt {
+  margin-bottom: 0.75em;
+}
+.cart .contProduct .tableBody .showProduct .confirm dl strong {
+  font-family: "SpoqaHanSansNeo-Bold";
+  font-size: 1.5em;
+  margin-right: 0.125em;
+}
+.cart .contProduct .tableBody .showProduct .confirm dl.payment dt {
+  font-family: "SpoqaHanSansNeo-Bold";
+}
+.cart .contProduct .tableBody .showProduct .confirm dl.payment dd {
+  color: #eb5757;
+}
+.cart .contProduct .tableBody .showProduct .confirm dl.payment dd strong {
+  font-size: 2.25em;
+}
+.cart .contProduct .tableBody .showProduct .confirm .calculate {
+  background-color: #fff;
+  width: 1.88em;
+  height: 1.88em;
+  border-radius: 50%;
+  background-position: center;
+  background-size: 1em;
+  background-repeat: no-repeat;
+}
+.cart .contProduct .tableBody .showProduct .confirm .calculate.plus {
+  background-image: url(../images/icon-plus-line.svg);
+}
+.cart .contProduct .tableBody .showProduct .confirm .calculate.minus {
+  background-image: url(../images/icon-minus-line.svg);
+}
+.cart .contProduct .tableBody .showProduct .submit {
+  font-size: 1.33em;
+  font-family: "SpoqaHanSansNeo-Bold";
+  border-radius: 5px;
+  padding: 1.05em 3.66em;
+  background-color: #21bf48;
+  color: #fff;
+  margin-bottom: 8.88em;
 }
 
 .register {
