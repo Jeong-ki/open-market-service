@@ -10,6 +10,7 @@ import DashBoard from "./pages/DashBoard";
 import AddProduct from "./pages/AddProduct";
 import Error from "./pages/Error";
 import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/order" element={<Order />} />
       <Route path="/dashBoard" element={<DashBoard />} />
       <Route path="/addProduct" element={<AddProduct />} />
+      <Route path="/Payment" element={<Payment />} />
       <Route path="/error" element={<Error />} />
     </Routes>
   );
