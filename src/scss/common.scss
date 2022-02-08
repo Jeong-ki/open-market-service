@@ -59,6 +59,6 @@ body {
 @import "header", "footer";
 
 // 순상
-@import "main", "login", "product", "cart";
+@import "main", "login", "product", "cart", "payment";
 // 기수
 @import "register", "dashheader", "dashboard", "addproduct", "error";
