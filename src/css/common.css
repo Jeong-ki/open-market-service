@@ -715,8 +715,6 @@ body {
   max-width: 160px;
   max-height: 160px;
   border-radius: 10px;
-  background-color: floralwhite;
-  outline: 1px solid red;
   margin: 1.11em 0;
 }
 .cart .contProduct .tableBody .showProduct li .introduce .introduceText {
@@ -843,6 +841,213 @@ body {
   background-color: #21bf48;
   color: #fff;
   margin-bottom: 8.88em;
+}
+
+.payment {
+  font-size: 0.93vw;
+  padding: 0 16.66vw;
+}
+.payment h2 {
+  margin: 3em 0 2.88em;
+  font-size: 2em;
+  font-family: "SpoqaHanSansNeo-Bold";
+}
+.payment .tableHead {
+  text-align: center;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1em 0;
+}
+.payment .tableHead li {
+  flex-basis: 18%;
+}
+.payment .tableHead li span {
+  width: 1.11em;
+  height: 1.11em;
+  display: block;
+  border-radius: 50%;
+  border: 2px solid #21bf48;
+  margin: 0 auto;
+}
+.payment .tableHead li:nth-child(1) {
+  flex-basis: 46%;
+}
+.payment .productList {
+  text-align: center;
+}
+.payment .productList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #c4c4c4;
+}
+.payment .productList .introduce {
+  flex-basis: 46%;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.payment .productList .introduce img {
+  width: 5.77em;
+  height: 5.77em;
+  border-radius: 10px;
+  margin: 1.33em 0 0.94em;
+  background-color: floralwhite;
+  outline: 1px solid red;
+}
+.payment .productList .introduce .introduceText {
+  margin-left: 2em;
+}
+.payment .productList .introduce .introduceText .company {
+  font-size: 0.77em;
+  color: #767676;
+}
+.payment .productList .introduce .introduceText dt {
+  margin: 0.33em 0 0.55em;
+}
+.payment .productList .introduce .introduceText dd {
+  font-size: 0.77em;
+  color: #767676;
+}
+.payment .productList .sale {
+  flex-basis: 18%;
+}
+.payment .productList .delivery {
+  flex-basis: 18%;
+  color: #767676;
+}
+.payment .productList .price {
+  flex-basis: 18%;
+  font-family: "SpoqaHanSansNeo-Bold";
+}
+.payment .total {
+  text-align: right;
+  margin: 1.66em 0 5.33em;
+  font-family: "SpoqaHanSansNeo-Medium";
+}
+.payment .total span {
+  color: red;
+  font-size: 1.33em;
+  margin-left: 0.41em;
+}
+.payment .deliveryPayment .deliveryInform h4 {
+  font-size: 1.33em;
+  font-family: "SpoqaHanSansNeo-Medium";
+  padding-bottom: 0.75em;
+  border-bottom: 2px solid #c4c4c4;
+}
+.payment .deliveryPayment .deliveryInform h5 {
+  font-family: "SpoqaHanSansNeo-Medium";
+  padding: 2.22em 0 0.44em;
+  border-bottom: 2px solid #c4c4c4;
+}
+.payment .deliveryPayment .deliveryInform li {
+  padding: 0.44em 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #c4c4c4;
+}
+.payment .deliveryPayment .deliveryInform li span {
+  font-size: 0.88em;
+  flex-basis: 9.44em;
+}
+.payment .deliveryPayment .deliveryInform li label {
+  width: 18.55em;
+}
+.payment .deliveryPayment .deliveryInform li input {
+  border: 1px solid #c4c4c4;
+  width: 100%;
+  box-sizing: border-box;
+}
+.payment .deliveryPayment .deliveryInform li .phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 18.55em;
+}
+.payment .deliveryPayment .deliveryInform li .phone label {
+  display: block;
+  width: calc((100% - 3em) / 3);
+  position: relative;
+}
+.payment .deliveryPayment .deliveryInform li .phone label input {
+  display: block;
+}
+.payment .deliveryPayment .deliveryInform li .phone label:after {
+  position: absolute;
+  content: "";
+  width: 0.38em;
+  height: 1px;
+  background-color: #000;
+  top: 50%;
+  right: -0.93em;
+  transform: translateY(-50%);
+}
+.payment .deliveryPayment .deliveryInform li .phone label:last-child:after {
+  display: none;
+}
+.payment .deliveryPayment .deliveryInform li.address {
+  display: block;
+}
+.payment .deliveryPayment .deliveryInform li.address .addressBtn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.payment .deliveryPayment .deliveryInform li.address .addressBtn div {
+  width: 18.55em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.payment .deliveryPayment .deliveryInform li.address .addressBtn input {
+  font-size: 0.88em;
+  padding: 0.625em 0;
+}
+.payment .deliveryPayment .deliveryInform li.address .addressBtn button {
+  font-size: 0.88em;
+  color: #fff;
+  font-family: "SpoqaHanSansNeo-Medium";
+  padding: 0.625em 1.125em;
+  background-color: #21bf48;
+  margin-left: 0.625em;
+  white-space: nowrap;
+}
+.payment .deliveryPayment .deliveryInform li.address .detailAddress {
+  margin-left: 8.3em;
+}
+.payment .deliveryPayment .deliveryInform li.address .detailAddress input {
+  margin-top: 0.44em;
+  width: 44.44em;
+}
+.payment .deliveryPayment .deliveryInform li.deliveryMessage input {
+  width: 44.44em;
+}
+.payment .deliveryPayment .paymentInform {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  margin: 3.88em 0 19.88em;
+}
+.payment .deliveryPayment .paymentInform h5 {
+  font-family: "SpoqaHanSansNeo-Medium";
+  font-size: 1.33em;
+  padding-bottom: 0.75em;
+}
+.payment .deliveryPayment .paymentInform .method h5 {
+  border-bottom: 2px solid #c4c4c4;
 }
 
 .register {
