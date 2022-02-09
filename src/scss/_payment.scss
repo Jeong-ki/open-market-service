@@ -112,6 +112,8 @@
           border: 1px solid nth($gray, 2);
           width: 100%;
           box-sizing: border-box;
+          font-size: 0.88em;
+          padding: 0.625em 0.5em;
         }
         .phone {
           @include flex($a: center);
@@ -122,6 +124,8 @@
             position: relative;
             input {
               display: block;
+              font-size: 0.88em;
+              padding: 0.625em 0.5em;
             }
             &:after {
               position: absolute;
@@ -149,7 +153,7 @@
             }
             input {
               font-size: 0.88em;
-              padding: 0.625em 0;
+              padding: 0.625em 0.5em;
             }
             button {
               font-size: 0.88em;
@@ -166,12 +170,16 @@
             input {
               margin-top: 0.44em;
               width: 44.44em;
+              font-size: 0.88em;
+              padding: 0.625em 0.5em;
             }
           }
         }
         &.deliveryMessage {
           input {
             width: 44.44em;
+            font-size: 0.88em;
+            padding: 0.625em 0.5em;
           }
         }
       }
@@ -185,8 +193,94 @@
         padding-bottom: 0.75em;
       }
       .method {
+        flex-grow: 1;
         h5 {
           border-bottom: 2px solid nth($gray, 2);
+        }
+        div {
+          @include flex($a: center, $j: flex-start);
+          padding: 1em 0;
+          border-bottom: 2px solid nth($gray, 2);
+          input {
+            margin: 0 0.55em 0 1.11em;
+            &:first-child {
+              margin: 0 0.55em 0 0.51em;
+            }
+          }
+          label {
+            font-size: 0.88em;
+          }
+        }
+        input {
+          margin: 0;
+        }
+      }
+
+      .final {
+        margin-left: 2.22em;
+        .borderGreen {
+          border: 2px solid $green;
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .inform {
+          padding: 1.88em 1.66em;
+          .paymentList {
+            font-size: 0.88em;
+            @include flex($a: center, $w: wrap);
+            padding-bottom: 0.25em;
+            border-bottom: 1px solid nth($gray, 2);
+            dt {
+              flex-basis: 50%;
+              margin-bottom: 0.93em;
+            }
+            dt::before {
+              content: "- ";
+            }
+            dd {
+              text-align: right;
+              flex-basis: 50%;
+              strong {
+                font-family: $f7;
+                font-size: 1.125em;
+                padding-right: 0.22em;
+              }
+            }
+          }
+          .finalPay {
+            @include flex($a: center);
+            font-size: 0.88em;
+            margin: 1.5em 0 1.25em;
+            dt {
+              padding-left: 0.7em;
+            }
+            dd {
+              color: #eb5757;
+              font-family: $f7;
+              font-size: 1.5em;
+            }
+          }
+        }
+        .check {
+          background-color: nth($gray, 3);
+          padding: 1.88em 1.66em;
+          label {
+            font-size: 0.88em;
+            @include flex($a: center, $j: flex-start);
+            input {
+              margin-right: 0.4em;
+            }
+          }
+          button {
+            font-size: 1.33em;
+            font-family: $f7;
+            color: #fff;
+            background-color: nth($gray, 2);
+            border-radius: 5px;
+            padding: 1.05em 3.66em;
+            display: block;
+            margin: 0 auto 0.16em;
+          }
         }
       }
     }

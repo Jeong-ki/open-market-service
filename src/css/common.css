@@ -966,6 +966,8 @@ body {
   border: 1px solid #c4c4c4;
   width: 100%;
   box-sizing: border-box;
+  font-size: 0.88em;
+  padding: 0.625em 0.5em;
 }
 .payment .deliveryPayment .deliveryInform li .phone {
   display: flex;
@@ -981,6 +983,8 @@ body {
 }
 .payment .deliveryPayment .deliveryInform li .phone label input {
   display: block;
+  font-size: 0.88em;
+  padding: 0.625em 0.5em;
 }
 .payment .deliveryPayment .deliveryInform li .phone label:after {
   position: absolute;
@@ -1013,7 +1017,7 @@ body {
 }
 .payment .deliveryPayment .deliveryInform li.address .addressBtn input {
   font-size: 0.88em;
-  padding: 0.625em 0;
+  padding: 0.625em 0.5em;
 }
 .payment .deliveryPayment .deliveryInform li.address .addressBtn button {
   font-size: 0.88em;
@@ -1030,9 +1034,13 @@ body {
 .payment .deliveryPayment .deliveryInform li.address .detailAddress input {
   margin-top: 0.44em;
   width: 44.44em;
+  font-size: 0.88em;
+  padding: 0.625em 0.5em;
 }
 .payment .deliveryPayment .deliveryInform li.deliveryMessage input {
   width: 44.44em;
+  font-size: 0.88em;
+  padding: 0.625em 0.5em;
 }
 .payment .deliveryPayment .paymentInform {
   display: flex;
@@ -1046,8 +1054,107 @@ body {
   font-size: 1.33em;
   padding-bottom: 0.75em;
 }
+.payment .deliveryPayment .paymentInform .method {
+  flex-grow: 1;
+}
 .payment .deliveryPayment .paymentInform .method h5 {
   border-bottom: 2px solid #c4c4c4;
+}
+.payment .deliveryPayment .paymentInform .method div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1em 0;
+  border-bottom: 2px solid #c4c4c4;
+}
+.payment .deliveryPayment .paymentInform .method div input {
+  margin: 0 0.55em 0 1.11em;
+}
+.payment .deliveryPayment .paymentInform .method div input:first-child {
+  margin: 0 0.55em 0 0.51em;
+}
+.payment .deliveryPayment .paymentInform .method div label {
+  font-size: 0.88em;
+}
+.payment .deliveryPayment .paymentInform .method input {
+  margin: 0;
+}
+.payment .deliveryPayment .paymentInform .final {
+  margin-left: 2.22em;
+}
+.payment .deliveryPayment .paymentInform .final .borderGreen {
+  border: 2px solid #21bf48;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.payment .deliveryPayment .paymentInform .final .inform {
+  padding: 1.88em 1.66em;
+}
+.payment .deliveryPayment .paymentInform .final .inform .paymentList {
+  font-size: 0.88em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid #c4c4c4;
+}
+.payment .deliveryPayment .paymentInform .final .inform .paymentList dt {
+  flex-basis: 50%;
+  margin-bottom: 0.93em;
+}
+.payment .deliveryPayment .paymentInform .final .inform .paymentList dt::before {
+  content: "- ";
+}
+.payment .deliveryPayment .paymentInform .final .inform .paymentList dd {
+  text-align: right;
+  flex-basis: 50%;
+}
+.payment .deliveryPayment .paymentInform .final .inform .paymentList dd strong {
+  font-family: "SpoqaHanSansNeo-Bold";
+  font-size: 1.125em;
+  padding-right: 0.22em;
+}
+.payment .deliveryPayment .paymentInform .final .inform .finalPay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-size: 0.88em;
+  margin: 1.5em 0 1.25em;
+}
+.payment .deliveryPayment .paymentInform .final .inform .finalPay dt {
+  padding-left: 0.7em;
+}
+.payment .deliveryPayment .paymentInform .final .inform .finalPay dd {
+  color: #eb5757;
+  font-family: "SpoqaHanSansNeo-Bold";
+  font-size: 1.5em;
+}
+.payment .deliveryPayment .paymentInform .final .check {
+  background-color: #f2f2f2;
+  padding: 1.88em 1.66em;
+}
+.payment .deliveryPayment .paymentInform .final .check label {
+  font-size: 0.88em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.payment .deliveryPayment .paymentInform .final .check label input {
+  margin-right: 0.4em;
+}
+.payment .deliveryPayment .paymentInform .final .check button {
+  font-size: 1.33em;
+  font-family: "SpoqaHanSansNeo-Bold";
+  color: #fff;
+  background-color: #c4c4c4;
+  border-radius: 5px;
+  padding: 1.05em 3.66em;
+  display: block;
+  margin: 0 auto 0.16em;
 }
 
 .register {

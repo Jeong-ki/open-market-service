@@ -173,55 +173,53 @@ function Payment() {
               <h4 className="hide">결제수단 및 결제 정보</h4>
               <article className="method">
                 <h5>결제 수단</h5>
-                <label>
-                  <input type="radio" name="payment" />
-                  신용/체크카드
-                </label>
-                <label>
-                  <input type="radio" name="payment" />
-                  무통장 입금
-                </label>
-                <label>
-                  <input type="radio" name="payment" />
-                  휴대폰 결제
-                </label>
-                <label>
-                  <input type="radio" name="payment" />
-                  네이버페이
-                </label>
-                <label>
-                  <input type="radio" name="payment" />
-                  카카오페이
-                </label>
+                <div>
+                  <input type="radio" name="payment" id="card" />
+                  <label htmlFor="card">신용/체크카드</label>
+                  <input type="radio" name="payment" id="money" />
+                  <label htmlFor="money">무통장 입금</label>
+                  <input type="radio" name="payment" id="phone" />
+                  <label htmlFor="phone">휴대폰 결제</label>
+                  <input type="radio" name="payment" id="naver" />
+                  <label htmlFor="naver">네이버페이</label>
+                  <input type="radio" name="payment" id="kakao" />
+                  <label htmlFor="kakao">카카오페이</label>
+                </div>
               </article>
 
-              <article>
+              <article className="final">
                 <h5>최종 결제정보</h5>
-                <div>
-                  <dl>
-                    <dt>상품금액</dt>
-                    <dd>
-                      <strong>46,500</strong>원
-                    </dd>
-                    <dt>할인금액</dt>
-                    <dd>
-                      <strong>0</strong>원
-                    </dd>
-                    <dt>배송비</dt>
-                    <dd>
-                      <strong>0</strong>원
-                    </dd>
-                    <dt>결제금액</dt>
-                    <dd>
-                      <strong>46,500</strong>원
-                    </dd>
-                  </dl>
-                  <label>
-                    <input type="checkbox" />
-                    주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.
-                  </label>
-                  <br />
-                  <button type="submit">결제하기</button>
+                <div className="borderGreen">
+                  <div className="inform">
+                    <dl className="paymentList">
+                      <dt>상품금액</dt>
+                      <dd>
+                        <strong>46,500</strong>원
+                      </dd>
+                      <dt>할인금액</dt>
+                      <dd>
+                        <strong>0</strong>원
+                      </dd>
+                      <dt>배송비</dt>
+                      <dd>
+                        <strong>0</strong>원
+                      </dd>
+                    </dl>
+                    <dl className="finalPay">
+                      <dt>결제금액</dt>
+                      <dd>
+                        <strong>46,500</strong>원
+                      </dd>
+                    </dl>
+                  </div>
+                  <div className="check">
+                    <label>
+                      <input type="checkbox" />
+                      주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.
+                    </label>
+                    <br />
+                    <button type="submit">결제하기</button>
+                  </div>
                 </div>
               </article>
             </section>
