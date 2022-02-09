@@ -15,12 +15,14 @@
       padding: 20px 0 30px;
       width: 275px;
       border: 1px solid nth($gray, 2);
-      // border-left: 1px solid nth($gray, 2);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       font-family: $f5;
       font-size: 18px;
       &.buyer {
+        background-color: nth($gray, 3);
+      }
+      &.buyer.on {
         background-color: #fff;
         border-bottom: none;
         z-index: 10;
@@ -29,15 +31,21 @@
       &.seller {
         background-color: nth($gray, 3);
       }
+      &.seller.on {
+        background-color: #fff;
+        border-bottom: none;
+        z-index: 10;
+        border-left: #fff;
+      }
     }
     .registerForm {
       position: relative;
       bottom: 10px;
       margin: 0 auto;
       padding: 0 35px;
-      width: 477.51px;
+      width: 477px;
       border: 1px solid nth($gray, 2);
-      // border-top: none;
+      // border-top: none; 
 
       background-color: #fff;
       border-radius: 10px;
@@ -48,6 +56,9 @@
         margin-bottom: 10px;
         color: nth($gray, 1);
         &.id {
+          margin-top: 50px;
+        }
+        &.nameLabel {
           margin-top: 50px;
         }
       }
@@ -75,16 +86,22 @@
         &#name {
           width: 461.5px;
         }
-        &#checkPw {
-          margin-bottom: 50px;
-        }
         &#name,
         &#lastNumber {
           margin-bottom: 16px;
         }
       }
       .inpPw {
+        $c: &;
         position: relative;
+        & .pwWrong {
+          text-align: start;
+          color: #eb5757;
+          margin-bottom: 14px;
+          #{c} input {
+            border-color: red;
+          }
+        }
       }
       img {
         position: absolute;
@@ -102,6 +119,8 @@
       .phoneNumber {
         display: flex;
         input {
+          text-align: center;
+          padding: 0 8px;
           width: 133.5px;
         }
         #middleNumber {
@@ -128,10 +147,11 @@
             border-width: 0 2.5px 2.5px 0;
             transform: rotate(225deg);
           }
+          &.on::after {
+            transform: rotate(45deg);
+          }
         }
-        // .on 만들어서 적용
         #firstNumber {
-          display: none;
           position: absolute;
           margin-top: 60px;
           width: 152px;
@@ -147,6 +167,11 @@
             height: 40px;
           }
         }
+      }
+      .numWrong {
+        text-align: start;
+        color: #eb5757;
+        margin-bottom: 14px;
       }
 
       .email {
@@ -229,7 +254,7 @@
     }
 
     .submitBtn {
-      background-color: nth($gray, 2);
+      background-color: $green;
       color: #fff;
       width: 480px;
       height: 60px;
@@ -237,6 +262,9 @@
       border-radius: 5px;
       font-size: 18px;
       font-family: $f5;
+      &:disabled {
+        background-color: nth($gray, 2);
+      }
     }
   }
 }
