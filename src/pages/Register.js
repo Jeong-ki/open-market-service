@@ -3,8 +3,11 @@ import Logo from "../images/logo.png";
 import pwCheck from "../images/icon-check-off.svg";
 import pwCheckOn from "../images/icon-check-on.svg";
 import { useState } from "react/cjs/react.development";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -109,7 +112,6 @@ function RegisterPage() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     const emailRule = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])/i;
-    console.log(emailRule.test(event.target.value));
     if(emailRule.test(event.target.value)) {
       setEmailCheck(true);
     } else {
@@ -131,8 +133,32 @@ function RegisterPage() {
   }
 
   const handleSubmit = (event) => {
-    // submit function
+    event.preventDefault();
+    const data = {
+      username: id,
+      password: password,
+      password2: password2,
+      phone_number: firstNum + middleNum + lastNum,
+      name: name
+    }
+    postData(data);
   };
+
+  async function postData(data) {
+    console.log(data);
+    try {
+      const response = await axios.post('http://13.209.150.154:8000/accounts/signup/',
+        data
+      );
+      if(response) navigate("/");
+      
+    } catch(error) {
+      // 응답 실패
+      alert("로그인 실패");
+      console.error("응답 실패", error);
+      navigate("/register");
+    }
+  }
 
   return (
     <div className="register">
@@ -144,7 +170,8 @@ function RegisterPage() {
         <button onClick={sellerPage} className={seller ? "changeReg buyer" : "changeReg buyer on"}>구매회원가입</button>
         <button onClick={sellerPage} className={seller ? "changeReg seller on" : "changeReg seller"}>판매회원가입</button>
         <div className="registerForm">
-          <form onSubmit={handleSubmit} id="register">
+          {/* <form onSubmit={handleSubmit} id="register"> */}
+          <form id="register">
             <fieldset>
               <legend>회원가입</legend>
 
@@ -273,7 +300,7 @@ function RegisterPage() {
             </label>
           </div>
         </div>
-        <button className="submitBtn" type="submit" form="register" disabled={btnOn ? null : "disabled"}>
+        <button onClick={handleSubmit} className="submitBtn" type="button" form="register" disabled={btnOn ? null : "disabled"}>
           가입하기
         </button>
       </section>
