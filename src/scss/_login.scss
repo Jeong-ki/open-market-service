@@ -14,20 +14,24 @@
     position: relative;
     .loginChange {
       position: relative;
-      padding: 20px 77px 30px;
+      padding: 20px 76.7px 30px;
       border-top: 1px solid nth($gray, 2);
       border-left: 1px solid nth($gray, 2);
+      border-right: 1px solid nth($gray, 2);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       font-family: $f5;
       font-size: 18px;
       background-color: nth($gray, 3);
-      &.sale {
-        border-right: 1px solid nth($gray, 2);
-      }
       &.on {
         background-color: #fff;
         z-index: 10;
+      }
+      &.on.purchase {
+        border-right: none;
+      }
+      &.on.sale {
+        border-left: none;
       }
     }
     .loginForm {
@@ -43,7 +47,7 @@
       input {
         display: block;
         width: 100%;
-        padding: 20px 0;
+        padding: 20px 10px;
         border: none;
         border-bottom: 1px solid nth($gray, 3);
         &:last-child {
