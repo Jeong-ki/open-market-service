@@ -17,6 +17,8 @@ function RegisterPage() {
   const [lastNum, setLastNum] = useState("");
   const [email, setEmail] = useState("");
   const [dotcom, setDotcom] = useState("");
+  const [buyerNum, setBuyerNum] = useState("");
+  const [storeName, setStoreName] = useState("");
 
   const [pwCheckImg, setPwCheckImg] = useState(pwCheck);
   const [pwCheckImg2, setPwCheckImg2] = useState(pwCheck);
@@ -27,18 +29,26 @@ function RegisterPage() {
   const [lastNumCheck, setLastNumCheck] = useState(true);
   const [emailCheck, setEmailCheck] = useState(true);
   const [dotcomCheck, setDotcomCheck] = useState(true);
+  const [buyerNumCheck, setBuyerNumCheck] = useState(false);
 
   const [seller, setSeller] = useState(false);
   const [agree, setAgree] = useState(false);
   const [btnOn, setBtnOn] = useState(false);
   
   useEffect(() => {
-    if(pwCheckImg2===pwCheckOn && agree && !!(id && name && middleNum && lastNum && email && dotcom)) {
+    let user = true;
+    if(seller) {
+      user = buyerNumCheck && storeName ? true : false;
+    }
+
+    if(pwCheckImg2===pwCheckOn && agree && !!(id && name && middleNum && lastNum && email && dotcom) &&
+      middleNum.length>=3 && lastNum.length===4 && middleNumCheck && lastNumCheck && emailCheck && dotcomCheck
+      && user) {
       setBtnOn(true);
     } else {
       setBtnOn(false);
     }
-  }, [id, pwCheckImg2, name, middleNum, lastNum, email, dotcom, agree]);
+  }, [id, pwCheckImg2, name, middleNum, lastNum, email, dotcom, agree, buyerNum, storeName]);
 
   const sellerPage = (event) => {
     if(event.target.innerText === "구매회원가입") {
@@ -128,33 +138,58 @@ function RegisterPage() {
     }
   }
 
+  const handleBuyerNum = (event) => {
+    let num = event.target.value;
+    setBuyerNum(num);
+    if(isNaN(num) || num.length !== 10) {
+      setBuyerNumCheck(false);
+    } else {
+      setBuyerNumCheck(true);
+    }
+  }
+
+  const handleStoreName = (event) => {
+    setStoreName(event.target.value);
+  }
+
   const checkAgree = (event) => {
     setAgree(event.target.checked);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
+    const signUp = seller ? "signup_seller" : "signup";
+    const data = seller ? {
+      username: id,
+      password: password,
+      password2: password2,
+      phone_number: firstNum + middleNum + lastNum,
+      name: name,
+      company_registration_number: buyerNum,
+      store_name: storeName
+    }
+    : {
       username: id,
       password: password,
       password2: password2,
       phone_number: firstNum + middleNum + lastNum,
       name: name
     }
-    postData(data);
+    postData(data, signUp);
   };
 
-  async function postData(data) {
-    console.log(data);
+  async function postData(data, signUp) {
     try {
-      const response = await axios.post('http://13.209.150.154:8000/accounts/signup/',
+      const response = await axios.post(`http://13.209.150.154:8000/accounts/${signUp}/`,
         data
       );
-      if(response) navigate("/");
+      if(response) {
+        navigate("/login");
+      };
       
     } catch(error) {
       // 응답 실패
-      alert("로그인 실패");
+      alert("로그인 실패(중복된 암호 또는 전화번호)");
       console.error("응답 실패", error);
       navigate("/register");
     }
@@ -170,7 +205,6 @@ function RegisterPage() {
         <button onClick={sellerPage} className={seller ? "changeReg buyer" : "changeReg buyer on"}>구매회원가입</button>
         <button onClick={sellerPage} className={seller ? "changeReg seller on" : "changeReg seller"}>판매회원가입</button>
         <div className="registerForm">
-          {/* <form onSubmit={handleSubmit} id="register"> */}
           <form id="register">
             <fieldset>
               <legend>회원가입</legend>
@@ -278,11 +312,18 @@ function RegisterPage() {
                 ? <>
                     <div className="buyerNum">
                       <label htmlFor="bNum">사업자 등록번호</label>
-                      <input id="bNum" type="text" />
+                      <input onChange={handleBuyerNum} id="bNum" type="text" />
                       <button type="button">인증</button>
                     </div>
+                    {
+                      buyerNumCheck
+                      ? null
+                      : <>
+                        <p className="numWrong">10자리를 숫자로 입력해주세요.</p>
+                      </>
+                    }
                     <label htmlFor="storeName">스토어 이름</label>
-                    <input id="storeName" type="text" />
+                    <input onChange={handleStoreName} id="storeName" type="text" />
                   </>
                 : null
               }
