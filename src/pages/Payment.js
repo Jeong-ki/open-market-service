@@ -80,7 +80,7 @@ function Payment() {
         </p>
 
         <section className="deliveryPayment">
-          <h3 className="hide">배송 및 결제 정보</h3>
+          <h3 className="blind">배송 및 결제 정보</h3>
           <form method="post">
             <section className="deliveryInform">
               <h4>배송 정보</h4>
@@ -154,7 +154,7 @@ function Payment() {
                     <div className="detailAddress">
                       <label>
                         <input type="text" disabled />
-                        <span className="hide">상세주소를 입력해주세요.</span>
+                        <span className="blind">상세주소를 입력해주세요.</span>
                         <input type="text" />
                       </label>
                     </div>
@@ -170,7 +170,7 @@ function Payment() {
             </section>
 
             <section className="paymentInform">
-              <h4 className="hide">결제수단 및 결제 정보</h4>
+              <h4 className="blind">결제수단 및 결제 정보</h4>
               <article className="method">
                 <h5>결제 수단</h5>
                 <div>

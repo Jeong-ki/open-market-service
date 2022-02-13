@@ -18,10 +18,14 @@ function Header() {
         </form>
         <ul>
           <li className="basket">
-            <a href="/">장바구니</a>
+            <a href="/cart">
+              <p>장바구니</p>
+            </a>
           </li>
           <li className="login">
-            <a href="/login">로그인</a>
+            <a href="/login">
+              <p>로그인</p>
+            </a>
           </li>
         </ul>
       </nav>
