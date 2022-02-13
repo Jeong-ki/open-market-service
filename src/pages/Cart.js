@@ -33,7 +33,7 @@ function CartPage() {
                 <ul>
                   <li>
                     <label>
-                      <p className="hide">상품 체크 박스</p>
+                      <p className="blind">상품 체크 박스</p>
                       <input type="checkbox" className="hide" />
                       <div>
                         <span></span>
@@ -79,7 +79,7 @@ function CartPage() {
                   </li>
                   <li>
                     <label>
-                      <p className="hide">상품 체크 박스</p>
+                      <p className="blind">상품 체크 박스</p>
                       <input type="checkbox" className="hide" />
                       <div>
                         <span></span>
@@ -133,7 +133,7 @@ function CartPage() {
                     </dd>
                   </dl>
                   <div className="calculate minus">
-                    <span className="hide">-</span>
+                    <span className="blind">-</span>
                   </div>
                   <dl className="cale">
                     <dt>상품 할인</dt>
@@ -142,7 +142,7 @@ function CartPage() {
                     </dd>
                   </dl>
                   <div className="calculate plus">
-                    <span className="hide">+</span>
+                    <span className="blind">+</span>
                   </div>
                   <dl className="deliveryFee">
                     <dt>배송비</dt>
