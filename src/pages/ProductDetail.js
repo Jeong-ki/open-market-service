@@ -1,8 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import minus from "../images/icon-minus-line.svg";
 import plus from "../images/icon-plus-line.svg";
 function ProductDetailPage() {
+  let { id } = useParams();
+  console.log(id);
   return (
     <>
       <Header />

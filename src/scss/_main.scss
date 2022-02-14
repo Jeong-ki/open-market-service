@@ -5,25 +5,31 @@
     //500
     height: 26.04vw;
     position: relative;
-    z-index: -1;
-    ul.slide {
-      width: 100%;
+    .slideBox {
+      overflow: hidden;
       height: 100%;
-      @include flex();
-      // transform: translateX(-100%);
-      li {
-        flex-basis: 100%;
-        background-color: green;
-        &:nth-child(2) {
-          background-color: red;
+      ul.slide {
+        width: 300%;
+        height: inherit;
+        @include flex();
+        transition: 0.5s all;
+        transform: translateX(0);
+        &.two {
+          transform: translateX(-33.333%);
+        }
+        &.three {
+          transform: translateX(-66.666%);
+        }
+        li {
+          width: 100%;
+        }
+        a {
+          display: block;
+          height: 100%;
         }
       }
-      a {
-        display: block;
-        height: 100%;
-        // @include ir(nth($gray, 3));
-      }
     }
+
     div.lrBtn {
       width: 100%;
       position: absolute;
@@ -35,15 +41,22 @@
       }
     }
     div.dotBtn {
+      width: 3.66em;
+      height: 1.66em;
       position: absolute;
-      bottom: 20px;
+      bottom: 1.11em;
       left: 50%;
       transform: translateX(-50%);
+      @include flex($a: center);
+      border-radius: 10px;
+      background-color: rgba(87, 87, 87, 0.877);
+      padding: 5px 10px;
       span {
         display: inline-block;
-        width: 6px;
-        height: 6px;
-        margin: 0 3px;
+        width: 0.44em;
+        height: 0.44em;
+        min-width: 8px;
+        min-height: 8px;
         background: #fff;
         border-radius: 50%;
       }
@@ -67,7 +80,9 @@
         &:nth-child(3n + 2) {
           margin: 0 3.645vw;
         }
-
+        a {
+          display: block;
+        }
         div {
           border-radius: 10px;
           border: 1px solid nth($gray, 2);
