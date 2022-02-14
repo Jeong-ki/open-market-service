@@ -1,6 +1,7 @@
 import React from "react";
 import DashHeader from "../components/DashHeader";
 import test from "../images/icon-user.svg";
+import { Link } from "react-router-dom";
 
 function dashBoard() {
   return (
@@ -10,7 +11,8 @@ function dashBoard() {
         <h2>
           대시보드<strong>백엔드글로벌</strong>
         </h2>
-        <button className="uploadBtn">상품 업로드</button>
+        <Link to="/addProduct" className="uploadBtn">상품 업로드</Link>
+        {/* <button className="uploadBtn">상품 업로드</button> */}
         <div className="wrap">
           <ul className="menu">
             <li>판매중인 상품(3)</li>
@@ -32,6 +34,20 @@ function dashBoard() {
               <li>삭제</li>
             </ul>
             <ul className="products">
+              <li>
+                <div>
+                  <img src={test} alt="상품이미지" />
+                  <p>딥러닝 개발자 무릎 담요</p>
+                  <p>재고 : 370개</p>
+                </div>
+                <div className="price">17,500원</div>
+                <div className="box-update">
+                  <button className="update">수정</button>
+                </div>
+                <div className="box-delete">
+                  <button className="delete">삭제</button>
+                </div>
+              </li>
               <li>
                 <div>
                   <img src={test} alt="상품이미지" />

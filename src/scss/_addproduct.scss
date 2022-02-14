@@ -39,11 +39,6 @@
         border: 1px solid nth($gray, 2);
         margin-bottom: 0.8333vw;
         font-size: 0.8333vw;
-        &::placeholder {
-          color: nth($gray, 1);
-          font-size: 0.7292vw;
-          text-align: end;
-        }
         &:focus {
           outline: none;
         }
@@ -111,9 +106,17 @@
         display: none;
       }
       .inpInfo {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 100%;
+        .nameLen {
+          position: absolute;
+          top: 2.5521vw;
+          right: 0.8333vw;
+          color: nth($gray, 2);
+          font-size: 0.7292vw;
+        }
       }
     }
     .detailInfo {

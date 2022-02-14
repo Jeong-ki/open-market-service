@@ -51,7 +51,9 @@ function addProduct() {
 
                   <div className="inpInfo">
                     <label htmlFor="productName">상품명</label>
-                    <input id="productName" type="text" placeholder="13/20" />
+                    <input id="productName" type="text" />
+                    <span className="nameLen">13/20</span>
+                    
                     <label htmlFor="productPrice">판매가</label>
                     <div className="priceBox">
                       <input id="productPrice" type="text" />
