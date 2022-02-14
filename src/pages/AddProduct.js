@@ -1,8 +1,56 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 import DashHeader from "../components/DashHeader";
 import iconImg from "../images/icon-img.png";
+import axios from "axios";
 
-function addProduct() {
+function AddProduct() {
+  const [imgBase64, setImgBase64] = useState(""); // 파일 base64 - 미리보기
+  const [imgFile, setImgFile] = useState(null); // 파일
+
+  const handleChangeFile = (event) => {
+    console.log(event.target.files)
+    setImgFile(event.target.files);
+    // setImgBase64([]);
+    if (event.target.files[0]) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        if (base64) {
+          let base64Sub = base64.toString();
+          console.log(base64Sub);
+          setImgBase64(base64Sub);
+        }
+      }
+    }
+  }
+  
+  const saveInfo = async()=> {
+    const fd = new FormData();
+    Object.values(imgFile).forEach((file) => fd.append("file", file));
+  
+    fd.append(
+      "comment",
+      // comment
+    );
+
+    await axios.post('http://localhost:8110/test/WriteBoard.do', fd, {
+      headers: {
+        "Content-Type": `multipart/form-data; `,
+      }
+    })
+    .then((response) => {
+      if(response.data){
+          console.log(response.data)
+        // history.push("/test1");
+      }
+    })
+    .catch((error) => {
+      // 예외 처리
+    })
+  } 
+
   return (
     <>
       <DashHeader />
@@ -41,13 +89,19 @@ function addProduct() {
                 <legend>상품 등록</legend>
 
                 <div className="mainInfo">
-                  <label for="productImg" class="txt-label">
+                  <label htmlFor="productImg" className="txt-label">
                     상품 이미지
-                    <div class="productImg">
-                      <img src={iconImg} alt="상품 이미지" />
-                    </div>
+                    {
+                      imgBase64 
+                      ? <img className="uploadedImg" src={imgBase64} alt="등록한 상품" />
+
+                      : <div className="productImg">
+                          <img src={iconImg} alt="등록할 상품" />
+                        </div>
+                    }
+                    
                   </label>
-                  <input type="file" accept="image/*" id="productImg" />
+                  <input onChange={handleChangeFile} type="file" accept="image/*" id="productImg" />
 
                   <div className="inpInfo">
                     <label htmlFor="productName">상품명</label>
@@ -85,11 +139,11 @@ function addProduct() {
                     id="productInfo"
                     type="text"
                     value="에디터 영역"
-                    readonly
+                    readOnly
                   />
                   <div className="inpBtn">
                     <button>취소</button>
-                    <button form="addProductInfo">저장하기</button>
+                    <button onClick={saveInfo} form="addProductInfo">저장하기</button>
                   </div>
                 </div>
               </fieldset>
@@ -101,4 +155,4 @@ function addProduct() {
   );
 }
 
-export default addProduct;
+export default AddProduct;

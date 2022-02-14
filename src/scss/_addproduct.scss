@@ -91,6 +91,13 @@
           }
         }
       }
+      .uploadedImg {
+        width: 23.6458vw;
+        height: 23.6458vw;
+        margin-top: 0.5208vw;
+        margin-right: 2.0833vw;
+        border: 1px solid nth($gray, 2);
+      }
       .productImg {
         @include flex($a: center, $j: center);
         width: 23.6458vw;
