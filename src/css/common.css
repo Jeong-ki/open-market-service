@@ -134,6 +134,8 @@ body {
 }
 
 .header {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -319,24 +321,31 @@ body {
 .main .event {
   height: 26.04vw;
   position: relative;
-  z-index: -1;
 }
-.main .event ul.slide {
-  width: 100%;
+.main .event .slideBox {
+  overflow: hidden;
   height: 100%;
+}
+.main .event .slideBox ul.slide {
+  width: 300%;
+  height: inherit;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   flex-wrap: nowrap;
+  transition: 0.5s all;
+  transform: translateX(0);
 }
-.main .event ul.slide li {
-  flex-basis: 100%;
-  background-color: green;
+.main .event .slideBox ul.slide.two {
+  transform: translateX(-33.333%);
 }
-.main .event ul.slide li:nth-child(2) {
-  background-color: red;
+.main .event .slideBox ul.slide.three {
+  transform: translateX(-66.666%);
 }
-.main .event ul.slide a {
+.main .event .slideBox ul.slide li {
+  width: 100%;
+}
+.main .event .slideBox ul.slide a {
   display: block;
   height: 100%;
 }
@@ -354,16 +363,26 @@ body {
   width: 3.12vw;
 }
 .main .event div.dotBtn {
+  width: 3.66em;
+  height: 1.66em;
   position: absolute;
-  bottom: 20px;
+  bottom: 1.11em;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-radius: 10px;
+  background-color: rgba(87, 87, 87, 0.877);
+  padding: 5px 10px;
 }
 .main .event div.dotBtn span {
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin: 0 3px;
+  width: 0.44em;
+  height: 0.44em;
+  min-width: 8px;
+  min-height: 8px;
   background: #fff;
   border-radius: 50%;
 }
@@ -389,6 +408,9 @@ body {
 }
 .main .products ul li:nth-child(3n+2) {
   margin: 0 3.645vw;
+}
+.main .products ul li a {
+  display: block;
 }
 .main .products ul li div {
   border-radius: 10px;

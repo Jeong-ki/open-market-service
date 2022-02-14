@@ -8,6 +8,7 @@ function Main() {
   const [isLoading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
+  const [currentImg, setCurrentImg] = useState(1);
   useEffect(() => {
     axios
       .get("http://13.209.150.154:8000/products/")
@@ -20,6 +21,16 @@ function Main() {
       });
   }, []);
 
+  function imgSlideBtnClick(btnName) {
+    setCurrentImg(() => {
+      if (btnName === "leftBtn") return currentImg - 1;
+      else if (btnName === "rightBtn") return currentImg + 1;
+      else if (btnName === "firstBtn") return 1;
+      else if (btnName === "secondBtn") return 2;
+      else if (btnName === "thirdBtn") return 3;
+    });
+  }
+
   return (
     <>
       <Header />
@@ -27,35 +38,60 @@ function Main() {
         <h2 className="blind">상품이 나열된 상품 목록 페이지</h2>
         <section className="event">
           <h2 className="blind">이벤트 배너</h2>
-          <ul className="slide">
-            {/* 서버에서 불러와 추가되는 요소 */}
-            <li>
-              <a href="/">
-                <span>설명</span>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span>설명</span>
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <span>설명</span>
-              </a>
-            </li>
-          </ul>
+          <div className="slideBox">
+            {!isLoading ? (
+              <Imgslide inform={products} currentImg={currentImg} />
+            ) : (
+              ""
+            )}
+          </div>
+
           <div className="lrBtn">
-            <button className="left">
-              <img src={left} alt="좌측 슬라이드" />
-            </button>
-            <button className="right">
-              <img src={right} alt="우측 슬라이드" />
-            </button>
+            {currentImg === 1 ? (
+              <div></div>
+            ) : (
+              <button
+                className="left"
+                onClick={() => {
+                  imgSlideBtnClick("leftBtn");
+                }}
+              >
+                <img src={left} alt="좌측 슬라이드" />
+              </button>
+            )}
+            {currentImg === 3 ? (
+              <div></div>
+            ) : (
+              <button className="right">
+                <img
+                  src={right}
+                  alt="우측 슬라이드"
+                  onClick={() => {
+                    imgSlideBtnClick("rightBtn");
+                  }}
+                />
+              </button>
+            )}
           </div>
           <div className="dotBtn">
-            <span></span>
-            <span className="select"></span>
+            <span
+              className={currentImg === 1 ? "select" : ""}
+              onClick={() => {
+                imgSlideBtnClick("firstBtn");
+              }}
+            ></span>
+            <span
+              className={currentImg === 2 ? "select" : ""}
+              onClick={() => {
+                imgSlideBtnClick("secondBtn");
+              }}
+            ></span>
+            <span
+              className={currentImg === 3 ? "select" : ""}
+              onClick={() => {
+                imgSlideBtnClick("thirdBtn");
+              }}
+            ></span>
           </div>
         </section>
 
@@ -77,7 +113,7 @@ function ProductLi(props) {
       {props.products.map((product, i) => {
         return (
           <li key={i}>
-            <a href="/">
+            <a href={"/productDetail/" + product.product_id}>
               <div
                 style={{
                   background: `url(${product.image}) no-repeat center center/cover`,
@@ -90,6 +126,39 @@ function ProductLi(props) {
                   <strong>{product.price}</strong>원
                 </dd>
               </dl>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function Imgslide(props) {
+  let slideInform = props.inform.slice(0, 3);
+  let currentImg;
+  switch (props.currentImg) {
+    case 1:
+      currentImg = "one";
+      break;
+    case 2:
+      currentImg = "two";
+      break;
+    default:
+      currentImg = "three"; // eslint-disable-line no-unused-vars
+  }
+  return (
+    <ul className={"slide " + currentImg}>
+      {slideInform.map((slide, i) => {
+        return (
+          <li
+            key={i}
+            style={{
+              background: `url(${slide.image}) #f9f9f9 no-repeat center center/contain`,
+            }}
+          >
+            <a href={"/productDetail/" + slide.product_id}>
+              <span className="blind">{slide.product_name}</span>
             </a>
           </li>
         );
