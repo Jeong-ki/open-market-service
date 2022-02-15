@@ -1,8 +1,126 @@
 import React from "react";
+import { useState } from "react/cjs/react.development";
 import DashHeader from "../components/DashHeader";
 import iconImg from "../images/icon-img.png";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function addProduct() {
+function AddProduct() {
+  const navigate = useNavigate();
+  const [imgBase64, setImgBase64] = useState(""); // 파일 base64 - 미리보기
+  const [imgFile, setImgFile] = useState(null); // 파일
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [shippingMethod, setShippingMethod] = useState("PARCEL");
+  const [shippingFee, setShippingFee] = useState("");
+  const [stock, setStock] = useState("");
+  const [info, setInfo] = useState("상품 상세정보");
+
+  const handleChangeFile = (event) => {
+    setImgFile(event.target.files[0]);
+    if (event.target.files[0]) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        if (base64) {
+          let base64Sub = base64.toString();
+          console.log(base64Sub);
+          setImgBase64(base64Sub);
+        }
+      }
+    }
+  }
+
+  const handleProductNameChange = (event) => {
+    setProductName(event.target.value);
+  }
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  }
+  const shippingParcel = (event) => {
+    event.preventDefault();
+    setShippingMethod("PARCEL");
+  }
+  const shippingDelivery = (event) => {
+    event.preventDefault();
+    setShippingMethod("DELIVERY");
+  }
+  const handleShippingFeeChange = (event) => {
+    setShippingFee(event.target.value);
+  }
+  const handleStockChange = (event) => {
+    setStock(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    postData();
+  }
+
+  async function postData() {
+    const loginIdKey = localStorage.getItem("loginIdKey");
+    const formData = new FormData();
+    formData.append("product_name", productName);
+    formData.append("image", imgFile);
+    formData.append("price", parseInt(price));
+    formData.append("shipping_method", shippingMethod);
+    formData.append("shipping_fee", parseInt(shippingFee));
+    formData.append("stock", parseInt(stock));
+    formData.append("product_info", info);
+    formData.append("token", loginIdKey);
+
+    try {
+      const response = await axios.post(`http://13.209.150.154:8000/products/`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `JWT ${loginIdKey}`
+          }
+        }
+      );
+      console.log("response: ", response);
+      if(response) {
+        console.log(response);
+        navigate("/productDetail/" + response.data.product_id);
+      } else {
+        navigate("/error");
+      }
+      
+    } catch(error) {
+      console.error("응답 실패", error);
+      navigate("/error");
+    }
+  }
+
+  // const saveInfo = async() => {
+  //   // const fd = new FormData();
+  //   // Object.values(imgFile).forEach((file) => fd.append("file", file));
+  
+  //   // fd.append(
+  //   //   "comment",
+  //   //   // comment
+  //   // );
+
+  //   await axios.post('http://13.209.150.154:8000/products/', fd, {
+  //     headers: {
+  //       "Content-Type": `multipart/form-data; `,
+  //       "Authorization": loginIdKey
+  //     }
+  //   })
+  //   .then((response) => {
+  //     if(response.data){
+  //       console.log(response);
+  //       navigate("/productDetail/1");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     navigate("/error");
+  //   })
+  // } 
+
   return (
     <>
       <DashHeader />
@@ -41,37 +159,45 @@ function addProduct() {
                 <legend>상품 등록</legend>
 
                 <div className="mainInfo">
-                  <label for="productImg" class="txt-label">
+                  <label htmlFor="productImg" className="txt-label">
                     상품 이미지
-                    <div class="productImg">
-                      <img src={iconImg} alt="상품 이미지" />
-                    </div>
+                    {
+                      imgBase64 
+                      ? <img className="uploadedImg" src={imgBase64} alt="등록한 상품" />
+
+                      : <div className="productImg">
+                          <img src={iconImg} alt="등록할 상품" />
+                        </div>
+                    }
+                    
                   </label>
-                  <input type="file" accept="image/*" id="productImg" />
+                  <input onChange={handleChangeFile} type="file" accept="image/*" id="productImg" />
 
                   <div className="inpInfo">
                     <label htmlFor="productName">상품명</label>
-                    <input id="productName" type="text" placeholder="13/20" />
+                    <input onChange={handleProductNameChange} id="productName" type="text" maxLength={20}/>
+                    <span className="nameLen">{productName.length}/20</span>
+                    
                     <label htmlFor="productPrice">판매가</label>
                     <div className="priceBox">
-                      <input id="productPrice" type="text" />
+                      <input onChange={handlePriceChange} id="productPrice" type="number" />
                       <span>원</span>
                     </div>
                     <div className="delivery">
                       배송방법
                       <div className="deliveryBox">
-                        <button>택배,소포,등기</button>
-                        <button>직접배송(화물배달)</button>
+                        <button className={shippingMethod==="PARCEL" ? "on" : null} onClick={shippingParcel}>택배,소포,등기</button>
+                        <button className={shippingMethod==="DELIVERY" ? "on" : null} onClick={shippingDelivery}>직접배송(화물배달)</button>
                       </div>
                     </div>
                     <label htmlFor="deliveryCharge">기본 배송비</label>
                     <div className="priceBox">
-                      <input id="deliveryCharge" type="text" />
+                      <input onChange={handleShippingFeeChange} id="deliveryCharge" type="number" />
                       <span>원</span>
                     </div>
                     <label htmlFor="stock">재고</label>
                     <div className="priceBox">
-                      <input id="stock" type="text" />
+                      <input onChange={handleStockChange} id="stock" type="number" />
                       <span>개</span>
                     </div>
                   </div>
@@ -83,11 +209,11 @@ function addProduct() {
                     id="productInfo"
                     type="text"
                     value="에디터 영역"
-                    readonly
+                    readOnly
                   />
                   <div className="inpBtn">
                     <button>취소</button>
-                    <button form="addProductInfo">저장하기</button>
+                    <button onClick={handleSubmit} form="addProductInfo">저장하기</button>
                   </div>
                 </div>
               </fieldset>
@@ -99,4 +225,4 @@ function addProduct() {
   );
 }
 
-export default addProduct;
+export default AddProduct;

@@ -29,7 +29,7 @@ function RegisterPage() {
   const [lastNumCheck, setLastNumCheck] = useState(true);
   const [emailCheck, setEmailCheck] = useState(true);
   const [dotcomCheck, setDotcomCheck] = useState(true);
-  const [buyerNumCheck, setBuyerNumCheck] = useState(false);
+  const [buyerNumCheck, setBuyerNumCheck] = useState(true);
 
   const [seller, setSeller] = useState(false);
   const [agree, setAgree] = useState(false);
@@ -185,7 +185,9 @@ function RegisterPage() {
       );
       if(response) {
         navigate("/login");
-      };
+      } else {
+        navigate("/error");
+      }
       
     } catch(error) {
       // 응답 실패
