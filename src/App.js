@@ -24,6 +24,7 @@ function App() {
       <Route path="/dashBoard" element={<DashBoard />} />
       <Route path="/addProduct" element={<AddProduct />} />
       <Route path="/Payment" element={<Payment />} />
+      <Route path="/Payment/:id/:count" element={<Payment />} />
       <Route path="/error" element={<Error />} />
     </Routes>
   );

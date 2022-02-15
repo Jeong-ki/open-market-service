@@ -11,7 +11,6 @@
       //600
       width: 31.25vw;
       height: 31.25vw;
-      background-color: black;
     }
     .explanation {
       //630
@@ -67,6 +66,10 @@
             line-height: 1.25;
           }
         }
+        p {
+          margin-top: 1.66em;
+          color: red;
+        }
       }
 
       .price {
@@ -111,9 +114,11 @@
         @include flex($a: center);
         font-family: $f7;
         color: #fff;
-        button {
+        a {
           padding: 1.05em 0;
           border-radius: 5px;
+          display: block;
+          text-align: center;
         }
         .rightAway {
           width: 66%;
