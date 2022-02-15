@@ -387,7 +387,7 @@ body {
   border-radius: 50%;
 }
 .main .event div.dotBtn span.select {
-  background: #000;
+  background: #21bf48;
 }
 .main .products {
   text-align: left;
@@ -534,7 +534,6 @@ body {
 .product article .imgBox {
   width: 31.25vw;
   height: 31.25vw;
-  background-color: black;
 }
 .product article .explanation {
   width: 32.81vw;
@@ -587,6 +586,10 @@ body {
 .product article .explanation .amount div .volume {
   padding: 0 1.11em;
   line-height: 1.25;
+}
+.product article .explanation .amount p {
+  margin-top: 1.66em;
+  color: red;
 }
 .product article .explanation .price {
   display: flex;
@@ -642,9 +645,11 @@ body {
   font-family: "SpoqaHanSansNeo-Bold";
   color: #fff;
 }
-.product article .explanation .purchase button {
+.product article .explanation .purchase a {
   padding: 1.05em 0;
   border-radius: 5px;
+  display: block;
+  text-align: center;
 }
 .product article .explanation .purchase .rightAway {
   width: 66%;
