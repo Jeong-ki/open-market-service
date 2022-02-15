@@ -42,7 +42,13 @@
         &:focus {
           outline: none;
         }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
       }
+      
       .priceBox {
         display: flex;
         #stock,
@@ -81,13 +87,14 @@
           height: 2.8125vw;
           border-radius: 5px;
           margin-top: 0.5208vw;
+          border: 1px solid nth($gray, 2);
           &:nth-child(1) {
-            color: #fff;
-            background-color: $green;
             margin-right: 0.5208vw;
           }
-          &:nth-child(2) {
-            border: 1px solid nth($gray, 2);
+          &.on {
+            color: #fff;
+            background-color: $green;
+            border: 1px solid $green;
           }
         }
       }

@@ -3,15 +3,21 @@ import { useState } from "react/cjs/react.development";
 import DashHeader from "../components/DashHeader";
 import iconImg from "../images/icon-img.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
+  const navigate = useNavigate();
   const [imgBase64, setImgBase64] = useState(""); // 파일 base64 - 미리보기
   const [imgFile, setImgFile] = useState(null); // 파일
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [shippingMethod, setShippingMethod] = useState("PARCEL");
+  const [shippingFee, setShippingFee] = useState("");
+  const [stock, setStock] = useState("");
+  const [info, setInfo] = useState("상품 상세정보");
 
   const handleChangeFile = (event) => {
-    console.log(event.target.files)
-    setImgFile(event.target.files);
-    // setImgBase64([]);
+    setImgFile(event.target.files[0]);
     if (event.target.files[0]) {
       let reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
@@ -25,31 +31,95 @@ function AddProduct() {
       }
     }
   }
-  
-  const saveInfo = async()=> {
-    const fd = new FormData();
-    Object.values(imgFile).forEach((file) => fd.append("file", file));
-  
-    fd.append(
-      "comment",
-      // comment
-    );
 
-    await axios.post('http://localhost:8110/test/WriteBoard.do', fd, {
-      headers: {
-        "Content-Type": `multipart/form-data; `,
+  const handleProductNameChange = (event) => {
+    setProductName(event.target.value);
+  }
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  }
+  const shippingParcel = (event) => {
+    event.preventDefault();
+    setShippingMethod("PARCEL");
+  }
+  const shippingDelivery = (event) => {
+    event.preventDefault();
+    setShippingMethod("DELIVERY");
+  }
+  const handleShippingFeeChange = (event) => {
+    setShippingFee(event.target.value);
+  }
+  const handleStockChange = (event) => {
+    setStock(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    postData();
+  }
+
+  async function postData() {
+    const loginIdKey = localStorage.getItem("loginIdKey");
+    const formData = new FormData();
+    formData.append("product_name", productName);
+    formData.append("image", imgFile);
+    formData.append("price", parseInt(price));
+    formData.append("shipping_method", shippingMethod);
+    formData.append("shipping_fee", parseInt(shippingFee));
+    formData.append("stock", parseInt(stock));
+    formData.append("product_info", info);
+    formData.append("token", loginIdKey);
+
+    try {
+      const response = await axios.post(`http://13.209.150.154:8000/products/`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `JWT ${loginIdKey}`
+          }
+        }
+      );
+      console.log("response: ", response);
+      if(response) {
+        console.log(response);
+        navigate("/productDetail/" + response.data.product_id);
+      } else {
+        navigate("/error");
       }
-    })
-    .then((response) => {
-      if(response.data){
-          console.log(response.data)
-        // history.push("/test1");
-      }
-    })
-    .catch((error) => {
-      // 예외 처리
-    })
-  } 
+      
+    } catch(error) {
+      console.error("응답 실패", error);
+      navigate("/error");
+    }
+  }
+
+  // const saveInfo = async() => {
+  //   // const fd = new FormData();
+  //   // Object.values(imgFile).forEach((file) => fd.append("file", file));
+  
+  //   // fd.append(
+  //   //   "comment",
+  //   //   // comment
+  //   // );
+
+  //   await axios.post('http://13.209.150.154:8000/products/', fd, {
+  //     headers: {
+  //       "Content-Type": `multipart/form-data; `,
+  //       "Authorization": loginIdKey
+  //     }
+  //   })
+  //   .then((response) => {
+  //     if(response.data){
+  //       console.log(response);
+  //       navigate("/productDetail/1");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     navigate("/error");
+  //   })
+  // } 
 
   return (
     <>
@@ -105,29 +175,29 @@ function AddProduct() {
 
                   <div className="inpInfo">
                     <label htmlFor="productName">상품명</label>
-                    <input id="productName" type="text" />
-                    <span className="nameLen">13/20</span>
+                    <input onChange={handleProductNameChange} id="productName" type="text" maxLength={20}/>
+                    <span className="nameLen">{productName.length}/20</span>
                     
                     <label htmlFor="productPrice">판매가</label>
                     <div className="priceBox">
-                      <input id="productPrice" type="text" />
+                      <input onChange={handlePriceChange} id="productPrice" type="number" />
                       <span>원</span>
                     </div>
                     <div className="delivery">
                       배송방법
                       <div className="deliveryBox">
-                        <button>택배,소포,등기</button>
-                        <button>직접배송(화물배달)</button>
+                        <button className={shippingMethod==="PARCEL" ? "on" : null} onClick={shippingParcel}>택배,소포,등기</button>
+                        <button className={shippingMethod==="DELIVERY" ? "on" : null} onClick={shippingDelivery}>직접배송(화물배달)</button>
                       </div>
                     </div>
                     <label htmlFor="deliveryCharge">기본 배송비</label>
                     <div className="priceBox">
-                      <input id="deliveryCharge" type="text" />
+                      <input onChange={handleShippingFeeChange} id="deliveryCharge" type="number" />
                       <span>원</span>
                     </div>
                     <label htmlFor="stock">재고</label>
                     <div className="priceBox">
-                      <input id="stock" type="text" />
+                      <input onChange={handleStockChange} id="stock" type="number" />
                       <span>개</span>
                     </div>
                   </div>
@@ -143,7 +213,7 @@ function AddProduct() {
                   />
                   <div className="inpBtn">
                     <button>취소</button>
-                    <button onClick={saveInfo} form="addProductInfo">저장하기</button>
+                    <button onClick={handleSubmit} form="addProductInfo">저장하기</button>
                   </div>
                 </div>
               </fieldset>

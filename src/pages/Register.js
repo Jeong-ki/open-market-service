@@ -185,7 +185,9 @@ function RegisterPage() {
       );
       if(response) {
         navigate("/login");
-      };
+      } else {
+        navigate("/error");
+      }
       
     } catch(error) {
       // 응답 실패
