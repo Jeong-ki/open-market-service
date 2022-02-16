@@ -2,7 +2,7 @@
 
 .dashBoard {
   position: relative;
-  padding: 0 5.2083vw;
+  padding: 0 5.2083vw 5.0000vw;
   h2 {
     font-family: $f7;
     font-size: 1.875vw;
@@ -76,6 +76,7 @@
   }
   article {
     width: 100%;
+    height: 100%;
     background-color: nth($gray, 3);
     border: 1px solid nth($gray, 2);
     border-radius: 5px;
@@ -105,9 +106,11 @@
     .products {
       li {
         display: flex;
-        border-top: 1px solid nth($gray, 2);
         border-bottom: 1px solid nth($gray, 2);
         background-color: #fff;
+        &:nth-child(1) {
+          border-top: 1px solid nth($gray, 2);
+        }
         div {
           flex: 5 1 0;
           img {
@@ -115,6 +118,7 @@
             border-radius: 100px;
             float: left;
             width: 3.6458vw;
+            height: 3.6458vw;
             margin: 16px 30px;
           }
           p:nth-child(2) {
