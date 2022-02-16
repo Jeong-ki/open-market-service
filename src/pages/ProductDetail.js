@@ -9,6 +9,7 @@ function ProductDetailPage() {
   const [product, setProduct] = useState([]);
   const [isInventoryFull, setIsInventoryFull] = useState(false);
   let [productCount, setProductCount] = useState(1);
+  let [buttonClickChage, setButtonClickChage] = useState(1);
 
   useEffect(() => {
     axios
@@ -36,6 +37,29 @@ function ProductDetailPage() {
     } else if (calculate === "minus") {
       if (productCount >= 2) setProductCount(--number);
     }
+  }
+  function cartProductAdd(e) {
+    e.preventDefault();
+    axios
+      .get(
+        "http://13.209.150.154:8000/cart/",
+        // {
+        //   product_id: id,
+        //   quantity: productCount,
+        //   check: true,
+        // },
+        {
+          header: {
+            Authroization: "JWT " + localStorage.getItem("acessToken"),
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -88,7 +112,9 @@ function ProductDetailPage() {
                 >
                   <img src={minus} alt="minus" />
                 </button>
-                <span className="volume">{productCount}</span>
+                <span className="volume">
+                  {product.stock > 0 ? productCount : 0}
+                </span>
                 <button
                   type="button"
                   className="symbol"
@@ -123,7 +149,7 @@ function ProductDetailPage() {
               >
                 바로 구매
               </a>
-              <a href={"/cart"} className="basket">
+              <a href={"/cart"} className="basket" onClick={cartProductAdd}>
                 장바구니
               </a>
             </div>
@@ -132,16 +158,44 @@ function ProductDetailPage() {
 
         <ul className="btnList">
           <li>
-            <button className="on">버튼</button>
+            <button
+              className={buttonClickChage === 1 ? "on" : ""}
+              onClick={() => {
+                setButtonClickChage(1);
+              }}
+            >
+              버튼
+            </button>
           </li>
           <li>
-            <button>리뷰</button>
+            <button
+              className={buttonClickChage === 2 ? "on" : ""}
+              onClick={() => {
+                setButtonClickChage(2);
+              }}
+            >
+              리뷰
+            </button>
           </li>
           <li>
-            <button>Q&A</button>
+            <button
+              className={buttonClickChage === 3 ? "on" : ""}
+              onClick={() => {
+                setButtonClickChage(3);
+              }}
+            >
+              Q&A
+            </button>
           </li>
           <li>
-            <button>반품/교환정보</button>
+            <button
+              className={buttonClickChage === 4 ? "on" : ""}
+              onClick={() => {
+                setButtonClickChage(4);
+              }}
+            >
+              반품/교환정보
+            </button>
           </li>
         </ul>
       </section>

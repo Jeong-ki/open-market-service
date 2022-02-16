@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
 function Header() {
+  // 페이지로 이동을 위해 사용
+  let navigate = useNavigate();
+
+  let logiStatus = localStorage.getItem("acessToken") ? true : false;
+
+  function loginLogout(e) {
+    e.preventDefault();
+    if (logiStatus) {
+      localStorage.removeItem("acessToken");
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }
+
   return (
     <header className="header">
       <h1>
@@ -23,8 +39,8 @@ function Header() {
             </a>
           </li>
           <li className="login">
-            <a href="/login">
-              <p>로그인</p>
+            <a href="/login" onClick={loginLogout}>
+              <p>{logiStatus ? "로그아웃" : "로그인"}</p>
             </a>
           </li>
         </ul>
