@@ -2,7 +2,8 @@
 
 .dashBoard {
   position: relative;
-  padding: 0 5.2083vw 5.0000vw;
+  height: 75vh;
+  padding: 0 5.2083vw;
   h2 {
     font-family: $f7;
     font-size: 1.875vw;
@@ -39,7 +40,7 @@
   }
   .wrap {
     display: flex;
-    height: 46.0417vw;
+    height: 100%;
   }
   .menu {
     margin-right: 1.5625vw;
@@ -70,7 +71,9 @@
         font-size: 0.625vw;
         border-radius: 90px;
         text-align: center;
-        padding: 0.1042vw 0.3125vw;
+        line-height: 1.07vw;
+        width: 1.0417vw;
+        height: 1.0417vw;
       }
     }
   }
@@ -114,7 +117,7 @@
         div {
           flex: 5 1 0;
           img {
-            border: 1px solid black;
+            border: 1px solid nth($gray, 2);
             border-radius: 100px;
             float: left;
             width: 3.6458vw;
