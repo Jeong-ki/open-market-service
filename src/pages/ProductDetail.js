@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import minus from "../images/icon-minus-line.svg";
 import plus from "../images/icon-plus-line.svg";
+
 function ProductDetailPage() {
   let { id } = useParams();
+  let navigate = useNavigate();
+
   const [product, setProduct] = useState([]);
   const [isInventoryFull, setIsInventoryFull] = useState(false);
   let [productCount, setProductCount] = useState(1);
@@ -38,24 +41,26 @@ function ProductDetailPage() {
       if (productCount >= 2) setProductCount(--number);
     }
   }
+
   function cartProductAdd(e) {
     e.preventDefault();
     axios
-      .get(
+      .post(
         "http://13.209.150.154:8000/cart/",
-        // {
-        //   product_id: id,
-        //   quantity: productCount,
-        //   check: true,
-        // },
         {
-          header: {
-            Authroization: "JWT " + localStorage.getItem("acessToken"),
+          product_id: id,
+          quantity: productCount,
+          check: true,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `JWT ${localStorage.getItem("acessToken")}`,
           },
         }
       )
       .then((response) => {
-        console.log(response);
+        navigate("/cart");
       })
       .catch((err) => {
         console.log(err);
@@ -93,7 +98,7 @@ function ProductDetailPage() {
               <p className="delivery">
                 {product.shipping_method === "DELIVERY"
                   ? "택배배송 "
-                  : "소포배송 "}{" "}
+                  : "소포배송 "}
                 /
                 {product.shipping_fee === 0
                   ? " 무료배송"

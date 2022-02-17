@@ -163,6 +163,55 @@
               margin-bottom: 1.44em;
             }
           }
+
+          .dimm {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.356);
+            z-index: 99;
+            .modal {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 0.83vw;
+              width: 20em;
+              background-color: white;
+              padding: 3.75em 0 2.5em;
+              p {
+                margin-bottom: 2.5em;
+              }
+              .modalBtn {
+                width: 6.25em;
+                border: 1px solid #c4c4c4;
+                padding: 0.625em 2.14em;
+                white-space: nowrap;
+                border-radius: 5px;
+                box-sizing: border-box;
+                &.modalX {
+                  margin-right: 0.31em;
+                }
+                &.modalO {
+                  margin-left: 0.31em;
+                  background-color: $green;
+                  color: white;
+                  border: none;
+                }
+              }
+              .modalCancel {
+                position: absolute;
+                top: 1em;
+                right: 1em;
+                img {
+                  width: 1.22em;
+                  margin-bottom: 1.44em;
+                }
+              }
+            }
+          }
         }
         .confirm {
           background-color: nth($gray, 3);
@@ -180,7 +229,8 @@
               font-size: 1.5em;
               margin-right: 0.125em;
             }
-            &.payment {
+            &.paymentDl {
+              margin-left: 4.375em;
               dt {
                 font-family: $f7;
               }
