@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import DashHeader from "../components/DashHeader";
 import iconImg from "../images/icon-img.png";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function AddProduct() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [imgBase64, setImgBase64] = useState(""); // 파일 base64 - 미리보기
   const [imgFile, setImgFile] = useState(null); // 파일
   const [productName, setProductName] = useState("");
@@ -15,7 +16,31 @@ function AddProduct() {
   const [shippingFee, setShippingFee] = useState("");
   const [stock, setStock] = useState("");
   const [info, setInfo] = useState("상품 상세정보");
+  const [btnOn, setBtnOn] = useState(false);
+  let product = null;
+  
+  useEffect(() => {
+    product = location.state ? location.state.product : location.state;
+    console.log(product);
+    if(product) {
+      // setImgBase64(product.image);
+      setProductName(product.product_name);
+      setPrice(product.price);
+      setShippingMethod(product.shipping_method);
+      setShippingFee(product.shipping_fee);
+      setStock(product.stock);
+    }
+  }, []);
 
+  useEffect(() => {
+    console.log(!!(imgFile && productName && price && shippingFee && stock));
+    if(!!(imgFile && productName && price && shippingFee && stock)) {
+      setBtnOn(true);
+    } else {
+      setBtnOn(false);
+    }
+  }, [imgFile, productName, price, shippingFee, stock])
+  
   const handleChangeFile = (event) => {
     setImgFile(event.target.files[0]);
     if (event.target.files[0]) {
@@ -59,8 +84,12 @@ function AddProduct() {
   }
 
   async function postData() {
+    console.log(location.state.product);
     const loginIdKey = localStorage.getItem("loginIdKey");
     const formData = new FormData();
+    if(!location.state) {
+      formData.append("token", loginIdKey);
+    }
     formData.append("product_name", productName);
     formData.append("image", imgFile);
     formData.append("price", parseInt(price));
@@ -68,18 +97,26 @@ function AddProduct() {
     formData.append("shipping_fee", parseInt(shippingFee));
     formData.append("stock", parseInt(stock));
     formData.append("product_info", info);
-    formData.append("token", loginIdKey);
 
     try {
-      const response = await axios.post(`http://13.209.150.154:8000/products/`,
-        formData,
-        {
+      const response = location.state 
+      ? await axios.put(`http://13.209.150.154:8000/products/${location.state.product.product_id}/`,
+        formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `JWT ${loginIdKey}`
+          }
+        }
+      )
+      : await axios.post(`http://13.209.150.154:8000/products/`,
+        formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             Authorization: `JWT ${loginIdKey}`
           }
         }
       );
+      
       console.log("response: ", response);
       if(response) {
         console.log(response);
@@ -93,33 +130,6 @@ function AddProduct() {
       navigate("/error");
     }
   }
-
-  // const saveInfo = async() => {
-  //   // const fd = new FormData();
-  //   // Object.values(imgFile).forEach((file) => fd.append("file", file));
-  
-  //   // fd.append(
-  //   //   "comment",
-  //   //   // comment
-  //   // );
-
-  //   await axios.post('http://13.209.150.154:8000/products/', fd, {
-  //     headers: {
-  //       "Content-Type": `multipart/form-data; `,
-  //       "Authorization": loginIdKey
-  //     }
-  //   })
-  //   .then((response) => {
-  //     if(response.data){
-  //       console.log(response);
-  //       navigate("/productDetail/1");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     navigate("/error");
-  //   })
-  // } 
 
   return (
     <>
@@ -175,12 +185,12 @@ function AddProduct() {
 
                   <div className="inpInfo">
                     <label htmlFor="productName">상품명</label>
-                    <input onChange={handleProductNameChange} id="productName" type="text" maxLength={20}/>
+                    <input onChange={handleProductNameChange} value={productName} id="productName" type="text" maxLength={20}/>
                     <span className="nameLen">{productName.length}/20</span>
                     
                     <label htmlFor="productPrice">판매가</label>
                     <div className="priceBox">
-                      <input onChange={handlePriceChange} id="productPrice" type="number" />
+                      <input onChange={handlePriceChange} value={price} id="productPrice" type="number" />
                       <span>원</span>
                     </div>
                     <div className="delivery">
@@ -192,12 +202,12 @@ function AddProduct() {
                     </div>
                     <label htmlFor="deliveryCharge">기본 배송비</label>
                     <div className="priceBox">
-                      <input onChange={handleShippingFeeChange} id="deliveryCharge" type="number" />
+                      <input onChange={handleShippingFeeChange} value={shippingFee} id="deliveryCharge" type="number" />
                       <span>원</span>
                     </div>
                     <label htmlFor="stock">재고</label>
                     <div className="priceBox">
-                      <input onChange={handleStockChange} id="stock" type="number" />
+                      <input onChange={handleStockChange} value={stock} id="stock" type="number" />
                       <span>개</span>
                     </div>
                   </div>
@@ -213,7 +223,7 @@ function AddProduct() {
                   />
                   <div className="inpBtn">
                     <button>취소</button>
-                    <button onClick={handleSubmit} form="addProductInfo">저장하기</button>
+                    <button onClick={handleSubmit} form="addProductInfo" disabled={btnOn ? null : "disabled"}>저장하기</button>
                   </div>
                 </div>
               </fieldset>

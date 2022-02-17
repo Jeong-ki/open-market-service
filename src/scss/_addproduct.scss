@@ -161,6 +161,9 @@
           &:nth-child(2) {
             color: #fff;
             background-color: $green;
+            &:disabled {
+              background-color: nth($gray, 2);
+            }
           }
         }
       }
