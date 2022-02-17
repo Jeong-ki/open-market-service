@@ -7,11 +7,11 @@ import { useState } from "react/cjs/react.development";
 function DashBoard() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [delCheck, setDelCheck] = useState(true);
+  const [productCheck, setProductCheck] = useState(true);
 
   useEffect(() => {
     postData();
-  },[delCheck]);
+  },[productCheck]);
 
   async function postData() {
     try {
@@ -47,7 +47,7 @@ function DashBoard() {
       });
       if(response) {
         console.log("del response: ", response);
-        setDelCheck(!delCheck);
+        setProductCheck(!productCheck);
       } else {
         navigate("/error");
       }
@@ -73,7 +73,7 @@ function DashBoard() {
                 </div>
                 <div className="price">{product.price}원</div>
                 <div className="box-update">
-                  <button className="update">수정</button>
+                  <Link to="/addProduct" state={{product: product}} className="update">수정</Link>
                 </div>
                 <div className="box-delete">
                   <button onClick={() => { productDel(product.product_id) }} className="delete">삭제</button>

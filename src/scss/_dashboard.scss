@@ -54,7 +54,6 @@
       width: 11.9792vw;
       height: 2.6042vw;
       margin-bottom: 0.5208vw;
-      // 클릭됐을때의 스타일
       &:first-child {
         color: #fff;
         background-color: $green;
@@ -142,7 +141,7 @@
           font-size: 0.9375vw;
           flex: 3 1 0;
         }
-        button {
+        button, .update {
           font-size: 0.8333vw;
           width: 4.1667vw;
           height: 2.0833vw;
@@ -155,7 +154,8 @@
           flex: 1 1 0;
         }
         .box-update {
-          button {
+          .update {
+            @include flex($a: center, $j: center);
             background-color: $green;
             color: #fff;
           }
