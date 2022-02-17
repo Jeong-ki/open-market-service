@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import error from "../images/icon-404.png";
 
 function Error() {
+  const navigate = useNavigate();
+
   return (
     <section className="error">
       <h1>
@@ -14,8 +17,8 @@ function Error() {
         </p>
         <p className="small">웹 주소가 올바른지 확인해 주세요.</p>
         <div className="button">
-          <a href="/">메인으로</a>
-          <a href="/">이전 페이지</a>
+          <button onClick={() => navigate("/")}>메인으로</button>
+          <button onClick={() => navigate(-1)}>이전 페이지</button>
         </div>
       </div>
     </section>

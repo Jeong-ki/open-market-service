@@ -23,8 +23,7 @@
     .button {
       display: flex;
       margin-top: 2.0833vw;
-      a {
-        @include flex($a: center, $j: center);
+      button {
         font-size: 0.9375vw;
         width: 10.4167vw;
         height: 3.125vw;
