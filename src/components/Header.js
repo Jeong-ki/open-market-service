@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import logo from "../images/logo.png";
 function Header() {
   // 페이지로 이동을 위해 사용
   let navigate = useNavigate();
-
   let logiStatus = localStorage.getItem("acessToken") ? true : false;
 
   function loginLogout(e) {

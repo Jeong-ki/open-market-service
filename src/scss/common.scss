@@ -56,7 +56,7 @@ body {
   font-family: "SpoqaHanSansNeo-Regular";
 }
 
-@import "header", "footer";
+@import "header", "footer", "modal";
 
 // 순상
 @import "main", "login", "product", "cart", "payment";
