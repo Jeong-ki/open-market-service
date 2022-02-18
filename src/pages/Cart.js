@@ -1,17 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import Header from "../components/Header";
+import Modal from "../components/Modal";
+
 import minus from "../images/icon-minus-line.svg";
 import plus from "../images/icon-plus-line.svg";
 import remove from "../images/icon-delete.svg";
+
 function CartPage() {
   let cartList;
-  // let [cartList, setCartList] = useState([]);
   let products;
-  let [common, setCommon] = useState([]);
-  let [cartItemQuantity, setCartItemQuantity] = useState([]);
+  const [common, setCommon] = useState([]);
+  const [cartItemQuantity, setCartItemQuantity] = useState([]);
+  const [cartItemId, setCartItemId] = useState([]);
 
+  const [modalMethod, setModalMethod] = useState("login");
+  const [deleteItemInfo, setDeleteItemInfo] = useState(0);
+  const [pickItem, setPickItem] = useState(0);
+
+  const [isModal, setIsModal] = useState(false);
+  const [isCartItem, SetIsCartItem] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
+  const [ischeckedChange, setIscheckedChange] = useState(1);
+  const [thisProductId, setThisProductId] = useState(0);
   useEffect(() => {
+    isLogin();
     axios
       .get("http://13.209.150.154:8000/cart/", {
         headers: {
@@ -21,36 +35,49 @@ function CartPage() {
       })
       .then((response) => {
         cartList = [...response.data.results];
-        let copyArr = [];
+        console.log(cartList);
+        let copyQuantity = [];
+        let copyId = [];
         cartList.forEach((cartItem) => {
-          copyArr.push(cartItem.quantity);
+          SetIsCartItem(true);
+          copyId.push(cartItem.cart_item_id);
+          copyQuantity.push(cartItem.quantity);
         });
-        setCartItemQuantity(copyArr);
+        setCartItemQuantity(copyQuantity);
+        setCartItemId(copyId);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  useEffect(() => {
     axios
       .get("http://13.209.150.154:8000/products/")
       .then((response) => {
         products = [...response.data.results];
         let newArr = [];
+        let newCheckArr = [];
         cartList.forEach((cartItem) => {
           products.forEach((product) => {
             if (cartItem.product_id === product.product_id) {
               newArr.push(product);
+              newCheckArr.push(false);
             }
           });
         });
         setCommon(newArr);
+        setIsChecked(newCheckArr);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [isCartItem]);
+
+  function isLogin() {
+    let loginStatus = localStorage.getItem("acessToken") ? true : false;
+    if (!loginStatus) {
+      setModalMethod("login");
+      setIsModal(true);
+    }
+  }
 
   function productCountPlusMinus(calculate, i) {
     let copyArr = [...cartItemQuantity];
@@ -66,11 +93,6 @@ function CartPage() {
       }
     }
   }
-
-  function cartItemDelete(cartId) {
-    console.log(cartId);
-  }
-
   return (
     <>
       <Header />
@@ -88,37 +110,71 @@ function CartPage() {
 
           <article className="tableBody">
             <h3 className="blind">장바구니 상품 목록</h3>
-            <div className="noneProduct hide">
-              <p>
-                <strong>장바구니 안에 담긴 상품이 없습니다.</strong>
-              </p>
-              <p>원하는 상품을 장바구니에 담아보세요</p>
-            </div>
-
-            <div className="showProduct">
-              <form action="#" method="get">
-                <CartItem
-                  common={common}
-                  cartItemQuantity={cartItemQuantity}
-                  productCountPlusMinus={productCountPlusMinus}
-                  cartItemDelete={cartItemDelete}
-                />
-                <Confirm common={common} cartItemQuantity={cartItemQuantity} />
-                <button type="submit" className="submit">
-                  주문하기
-                </button>
-              </form>
-            </div>
+            {!isCartItem ? (
+              <div className="noneProduct">
+                <p>
+                  <strong>장바구니 안에 담긴 상품이 없습니다.</strong>
+                </p>
+                <p>원하는 상품을 장바구니에 담아보세요</p>
+              </div>
+            ) : (
+              <div className="showProduct">
+                <form action="#" method="get">
+                  <CartItem
+                    common={common}
+                    cartItemQuantity={cartItemQuantity}
+                    cartItemId={cartItemId}
+                    isChecked={isChecked}
+                    setIsChecked={setIsChecked}
+                    ischeckedChange={ischeckedChange}
+                    setIscheckedChange={setIscheckedChange}
+                    setIsModal={setIsModal}
+                    setPickItem={setPickItem}
+                    setThisProductId={setThisProductId}
+                    productCountPlusMinus={productCountPlusMinus}
+                    setModalMethod={setModalMethod}
+                    setDeleteItemInfo={setDeleteItemInfo}
+                  />
+                  <Confirm
+                    common={common}
+                    isChecked={isChecked}
+                    cartItemQuantity={cartItemQuantity}
+                  />
+                  <button type="submit" className="submit">
+                    주문하기
+                  </button>
+                </form>
+              </div>
+            )}
           </article>
         </div>
+
+        {isModal ? (
+          <Modal
+            setIsModal={setIsModal}
+            SetIsCartItem={SetIsCartItem}
+            productCountPlusMinus={productCountPlusMinus}
+            setIsModal={setIsModal}
+            modalMethod={modalMethod}
+            pickItem={pickItem}
+            deleteItemInfo={deleteItemInfo}
+            cartItemQuantity={cartItemQuantity}
+            thisProductId={thisProductId}
+          />
+        ) : (
+          ""
+        )}
       </section>
     </>
   );
 }
 
 function CartItem(props) {
-  let common = props.common;
-  let cartItemQuantity = props.cartItemQuantity;
+  const common = props.common;
+  const cartItemQuantity = props.cartItemQuantity;
+  const cartItemId = props.cartItemId;
+  const isChecked = props.isChecked;
+  let copyNumber = props.ischeckedChange;
   return (
     <ul>
       {common.map((item, i) => {
@@ -126,7 +182,17 @@ function CartItem(props) {
           <li key={i}>
             <label>
               <p className="blind">상품 체크 박스</p>
-              <input type="checkbox" className="hide" />
+              <input
+                type="checkbox"
+                className="hide"
+                defaultValue={isChecked[i]}
+                onChange={() => {
+                  props.setIscheckedChange(++copyNumber);
+                  let indexArr = isChecked;
+                  indexArr[i] = isChecked[i] ? false : true;
+                  props.setIsChecked(indexArr);
+                }}
+              />
               <div>
                 <span></span>
               </div>
@@ -167,7 +233,11 @@ function CartItem(props) {
                   type="button"
                   className="symbol"
                   onClick={() => {
-                    props.productCountPlusMinus("minus", i);
+                    props.setPickItem(i);
+                    props.setThisProductId(item.product_id);
+                    props.setDeleteItemInfo(cartItemId[i]);
+                    props.setModalMethod("amount");
+                    props.setIsModal(true);
                   }}
                 >
                   <img src={minus} alt="minus" />
@@ -177,7 +247,11 @@ function CartItem(props) {
                   type="button"
                   className="symbol"
                   onClick={() => {
-                    props.productCountPlusMinus("plus", i);
+                    props.setPickItem(i);
+                    props.setThisProductId(item.product_id);
+                    props.setDeleteItemInfo(cartItemId[i]);
+                    props.setModalMethod("amount");
+                    props.setIsModal(true);
                   }}
                 >
                   <img src={plus} alt="plus" />
@@ -187,7 +261,13 @@ function CartItem(props) {
 
             <div className="orderPrice">
               <p>
-                <strong>{item.price * cartItemQuantity[i]}</strong>원
+                <strong>
+                  {(item.price * cartItemQuantity[i] + "").replace(
+                    /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                    ","
+                  )}
+                </strong>
+                원
               </p>
               <button type="button" className="orderBtn">
                 주문하기
@@ -197,8 +277,9 @@ function CartItem(props) {
               type="button"
               className="cancel"
               onClick={() => {
-                console.log(common);
-                props.cartItemDelete(item.cart_item_id);
+                props.setDeleteItemInfo(cartItemId[i]);
+                props.setModalMethod("delete");
+                props.setIsModal(true);
               }}
             >
               <img src={remove} alt="상품 취소" />
@@ -211,14 +292,24 @@ function CartItem(props) {
 }
 
 function Confirm(props) {
-  let common = props.common;
-  let cartItemQuantity = props.cartItemQuantity;
-  let totalAmount = 0;
-  let fee = 0;
-  common.forEach((item, i) => {
-    totalAmount += item.price * cartItemQuantity[i];
-    fee += item.shipping_fee;
+  const common = props.common;
+  const cartItemQuantity = props.cartItemQuantity;
+  const isChecked = props.isChecked;
+  let [totalAmount, setTotalAmount] = useState(0);
+  let [fee, setFee] = useState(0);
+  useEffect(() => {
+    let copyTotal = 0;
+    let copyFee = 0;
+    common.forEach((item, i) => {
+      if (isChecked[i]) {
+        copyTotal += item.price * cartItemQuantity[i];
+        copyFee += item.shipping_fee;
+      }
+    });
+    setTotalAmount(copyTotal);
+    setFee(copyFee);
   });
+
   return (
     <div className="confirm">
       <dl className="total">
