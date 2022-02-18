@@ -35,7 +35,6 @@ function CartPage() {
       })
       .then((response) => {
         cartList = [...response.data.results];
-        console.log(cartList);
         let copyQuantity = [];
         let copyId = [];
         cartList.forEach((cartItem) => {

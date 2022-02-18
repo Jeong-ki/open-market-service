@@ -43,7 +43,6 @@
         height: 5.77em;
         border-radius: 10px;
         margin: 1.33em 0 0.94em;
-        @include line;
       }
       .introduceText {
         margin-left: 2em;
@@ -280,6 +279,9 @@
             padding: 1.05em 3.66em;
             display: block;
             margin: 0 auto 0.16em;
+            &.active {
+              background-color: $green;
+            }
           }
         }
       }

@@ -33,11 +33,6 @@ function Modal(props) {
     window.location.replace("/login");
   }
   function cartItemQuantityFix() {
-    console.log(
-      props.cartItemQuantity[props.pickItem],
-      props.thisProductId,
-      deleteItemInfo
-    );
     axios
       .put(
         "http://13.209.150.154:8000/cart/" + deleteItemInfo + "/",
