@@ -174,4 +174,58 @@
       }
     }
   }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8333vw;
+    .modal_overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    .modal_content {
+      background-color: white;
+      width: 18.7500vw;
+      height: 10.4167vw;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      border: 1px solid nth($gray, 2);
+      border-radius: 5px;
+      p {
+        margin-top: 3.1250vw;
+      }
+      .modalBtn {
+        width: 5.2083vw;
+        height: 2.0833vw;
+        margin-top: 2.0833vw;
+        border-radius: 5px;
+      }
+      .modalX {
+        color: nth($gray, 1);
+        border: 1px solid nth($gray, 2);
+        margin-right: 0.5208vw;
+      }
+      .modalO {
+        color: #fff;
+        background-color: $green;
+      }
+      .modalCancel {
+        position: absolute;
+        top: 0.9375vw;
+        right: 0.9375vw;
+        img {
+          width: 1.1458vw;
+          height: 1.1458vw;
+        }
+      }
+    }
+  }
 }
