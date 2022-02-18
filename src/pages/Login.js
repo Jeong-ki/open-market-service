@@ -87,7 +87,7 @@ function Login() {
                 <input
                   type="text"
                   placeholder="아이디"
-                  autocomplete="off"
+                  autoComplete="off"
                   onChange={(e) => {
                     setId(e.target.value);
                   }}

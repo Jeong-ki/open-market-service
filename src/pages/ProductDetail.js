@@ -19,7 +19,6 @@ function ProductDetailPage() {
       .get("http://13.209.150.154:8000/products/" + id)
       .then((response) => {
         setProduct(response.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
