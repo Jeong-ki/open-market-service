@@ -84,7 +84,6 @@ function AddProduct() {
   }
 
   async function postData() {
-    console.log(location.state.product);
     const loginIdKey = localStorage.getItem("loginIdKey");
     const formData = new FormData();
     if(!location.state) {
@@ -222,7 +221,7 @@ function AddProduct() {
                     readOnly
                   />
                   <div className="inpBtn">
-                    <button>취소</button>
+                    <button onClick={() => navigate(-1)}>취소</button>
                     <button onClick={handleSubmit} form="addProductInfo" disabled={btnOn ? null : "disabled"}>저장하기</button>
                   </div>
                 </div>

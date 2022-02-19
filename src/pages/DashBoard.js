@@ -3,11 +3,13 @@ import DashHeader from "../components/DashHeader";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
+import remove from "../images/icon-delete.svg";
 
 function DashBoard() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [productCheck, setProductCheck] = useState(true);
+  const [delModal, setDelModal] = useState(false);
 
   useEffect(() => {
     postData();
@@ -48,6 +50,7 @@ function DashBoard() {
       if(response) {
         console.log("del response: ", response);
         setProductCheck(!productCheck);
+        setDelModal(false);
       } else {
         navigate("/error");
       }
@@ -76,13 +79,29 @@ function DashBoard() {
                   <Link to="/addProduct" state={{product: product}} className="update">수정</Link>
                 </div>
                 <div className="box-delete">
-                  <button onClick={() => { productDel(product.product_id) }} className="delete">삭제</button>
+                  <button onClick={() => { setDelModal(product.product_id) }} className="delete">삭제</button>
                 </div>
               </li>
             )
           })
         }
       </ul>
+    );
+  }
+
+  function DelModal() {
+    return (
+      <div className="modal">
+        <div className="modal_overlay"></div>
+        <div className="modal_content">
+          <p>상품을 삭제하시겠습니까?</p>
+          <button onClick={() => { setDelModal(false) }} className="modalBtn modalX">취소</button>
+          <button onClick={() => { productDel(delModal) }} className="modalBtn modalO">확인</button>
+          <button onClick={() => { setDelModal(false) }} type="button" className="modalCancel">
+            <img src={remove} alt="상품 취소" />
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -96,7 +115,7 @@ function DashBoard() {
         <Link to="/addProduct" className="uploadBtn">상품 업로드</Link>
         <div className="wrap">
           <ul className="menu">
-            <li>판매중인 상품(3)</li>
+            <li>판매중인 상품({products.length})</li>
             <li>
               주문/배송 <span>2</span>
             </li>
@@ -117,6 +136,11 @@ function DashBoard() {
             <ProductList products={products} />
           </article>
         </div>
+        {
+          delModal
+          ? <DelModal />
+          : null
+        }
       </section>
     </>
   );
