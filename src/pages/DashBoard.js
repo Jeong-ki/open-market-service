@@ -79,7 +79,6 @@ function DashBoard() {
                   <Link to="/addProduct" state={{product: product}} className="update">수정</Link>
                 </div>
                 <div className="box-delete">
-                  {/* <button onClick={() => { productDel(product.product_id) }} className="delete">삭제</button> */}
                   <button onClick={() => { setDelModal(product.product_id) }} className="delete">삭제</button>
                 </div>
               </li>
