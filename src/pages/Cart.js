@@ -10,6 +10,7 @@ import plus from "../images/icon-plus-line.svg";
 import remove from "../images/icon-delete.svg";
 
 function CartPage() {
+  let navigate = useNavigate();
   let cartList;
   let products;
   const [common, setCommon] = useState([]);
@@ -141,7 +142,20 @@ function CartPage() {
                     isChecked={isChecked}
                     cartItemQuantity={cartItemQuantity}
                   />
-                  <button type="submit" className="submit">
+
+                  <button
+                    type="submit"
+                    className="submit"
+                    onClick={() => {
+                      navigate("/payment/0/0/2", {
+                        state: {
+                          common: common,
+                          cartItemQuantity: cartItemQuantity,
+                          isChecked: isChecked,
+                        },
+                      });
+                    }}
+                  >
                     주문하기
                   </button>
                 </form>

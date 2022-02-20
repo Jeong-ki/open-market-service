@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 
 function Payment() {
@@ -23,16 +23,14 @@ function Payment() {
   const [allCheck, setAllCheck] = useState(false);
 
   let navigate = useNavigate();
+  let location = useLocation();
+
+  console.log(location.state);
 
   useEffect(() => {
-    switch (kind) {
-      case "1":
-        directOrder();
-        break;
-      case "2":
-        break;
-      case "3":
-        break;
+    if (kind === "1" || kind === "3") {
+      directOrder();
+    } else if (kind === "2") {
     }
   }, []);
   useEffect(() => {
