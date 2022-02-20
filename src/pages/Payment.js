@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import test from "../images/test.jpg";
+
 function Payment() {
-  let { id, count } = useParams();
+  let { id, count, kind } = useParams();
   const [orderKind, setOrderKind] = useState("direct_order");
   const [products, setProducts] = useState([]);
 
@@ -25,13 +25,13 @@ function Payment() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    switch (orderKind) {
-      case "direct_order":
+    switch (kind) {
+      case "1":
         directOrder();
         break;
-      case "cart_order":
+      case "2":
         break;
-      case "cart_one_order":
+      case "3":
         break;
     }
   }, []);

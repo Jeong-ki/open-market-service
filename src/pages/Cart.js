@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 
@@ -24,6 +25,7 @@ function CartPage() {
   const [isChecked, setIsChecked] = useState([]);
   const [ischeckedChange, setIscheckedChange] = useState(1);
   const [thisProductId, setThisProductId] = useState(0);
+
   useEffect(() => {
     isLogin();
     axios
@@ -169,6 +171,7 @@ function CartPage() {
 }
 
 function CartItem(props) {
+  let navigate = useNavigate();
   const common = props.common;
   const cartItemQuantity = props.cartItemQuantity;
   const cartItemId = props.cartItemId;
@@ -268,7 +271,16 @@ function CartItem(props) {
                 </strong>
                 원
               </p>
-              <button type="button" className="orderBtn">
+              <button
+                type="button"
+                className="orderBtn"
+                onClick={() => {
+                  console.log(item.product_id, cartItemQuantity[i]);
+                  navigate(
+                    `/payment/${item.product_id}/${cartItemQuantity[i]}/3`
+                  );
+                }}
+              >
                 주문하기
               </button>
             </div>

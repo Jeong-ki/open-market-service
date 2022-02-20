@@ -148,7 +148,7 @@ function ProductDetailPage() {
             </div>
             <div className="purchase">
               <a
-                href={"/payment/" + id + "/" + productCount}
+                href={"/payment/" + id + "/" + productCount + "/" + 1 + "/"}
                 className="rightAway"
               >
                 바로 구매
