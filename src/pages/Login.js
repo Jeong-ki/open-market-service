@@ -42,7 +42,9 @@ function Login() {
     axios
       .post("http://13.209.150.154:8000/accounts/login/", data)
       .then((response) => {
+        console.log(response);
         localStorage.setItem("acessToken", response.data.token);
+        localStorage.setItem("userType", response.data.user_type);
         navigate(-1);
       })
       .catch(() => {

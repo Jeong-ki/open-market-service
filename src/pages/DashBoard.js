@@ -20,7 +20,7 @@ function DashBoard() {
       const response = await axios.get(`http://13.209.150.154:8000/seller/`, {
         headers: {
           'Content-Type': 'application/json',
-           Authorization: `JWT ${localStorage.getItem("loginIdKey")}`,
+           Authorization: `JWT ${localStorage.getItem("acessToken")}`,
         }
       });
       if(response) {
@@ -44,7 +44,7 @@ function DashBoard() {
       const response = await axios.delete(`http://13.209.150.154:8000/products/${product_id}`, {
         headers: {
           'Content-Type': 'application/json',
-           Authorization: `JWT ${localStorage.getItem("loginIdKey")}`,
+           Authorization: `JWT ${localStorage.getItem("acessToken")}`,
         }
       });
       if(response) {

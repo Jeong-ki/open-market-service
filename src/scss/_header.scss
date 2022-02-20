@@ -97,6 +97,28 @@
           }
         }
       }
+      li.seller {
+        @include flex($a: center, $j: center);
+        position: relative;
+        margin-left: 2.16em;
+        background-color: $green;
+        border-radius: 0.2604vw;
+        color: #fff;
+        padding: 1.1em 2em;
+        .sellerCenter {
+          @include flex($a: center, $j: center);
+          &::before {
+            content: "";
+            display: block;
+            width: 2.66em;
+            height: 2.66em;
+            min-width: 15px;
+            min-height: 15px;
+            background: url($imgUrl + "icon-shopping-bag.svg") center center/contain;
+            margin-right: 0.8em;
+          }
+        }
+      }
     }
   }
 }
