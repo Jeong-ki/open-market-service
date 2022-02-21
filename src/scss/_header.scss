@@ -60,8 +60,8 @@
       }
     }
     ul {
-      @include flex;
-      font-size: 0.75em;
+      @include flex($a: center);
+      font-size: 0.85em;
       color: nth($gray, 1);
       a {
         display: block;

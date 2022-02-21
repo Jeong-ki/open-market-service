@@ -34,11 +34,6 @@ function Header() {
           </fieldset>
         </form>
         <ul>
-          {/* <li className="basket">
-            <a href="/cart">
-              <p>장바구니</p>
-            </a>
-          </li> */}
           {
             logiStatus === "SELLER" 
             ? 

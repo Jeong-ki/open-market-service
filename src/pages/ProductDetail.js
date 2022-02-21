@@ -13,6 +13,7 @@ function ProductDetailPage() {
   const [isInventoryFull, setIsInventoryFull] = useState(false);
   let [productCount, setProductCount] = useState(1);
   let [buttonClickChage, setButtonClickChage] = useState(1);
+  const userType = localStorage.getItem("userType") === "BUYER" ? true : false;
 
   useEffect(() => {
     axios
@@ -148,12 +149,12 @@ function ProductDetailPage() {
             </div>
             <div className="purchase">
               <a
-                href={"/payment/" + id + "/" + productCount + "/" + 1 + "/"}
-                className="rightAway"
+                href={userType ? "/payment/" + id + "/" + productCount : null}
+                className={userType ? "rightAway" : "rightAway disabled"}
               >
                 바로 구매
               </a>
-              <a href={"/cart"} className="basket" onClick={cartProductAdd}>
+              <a href={userType ? "/cart" : null} className={userType ? "basket" : "basket disabled"} onClick={cartProductAdd}>
                 장바구니
               </a>
             </div>
