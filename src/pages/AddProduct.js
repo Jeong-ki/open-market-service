@@ -84,7 +84,7 @@ function AddProduct() {
   }
 
   async function postData() {
-    const loginIdKey = localStorage.getItem("loginIdKey");
+    const loginIdKey = localStorage.getItem("acessToken");
     const formData = new FormData();
     if(!location.state) {
       formData.append("token", loginIdKey);
