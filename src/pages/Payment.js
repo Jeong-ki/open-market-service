@@ -7,6 +7,9 @@ function Payment() {
   let { id, count, kind } = useParams();
   const [orderKind, setOrderKind] = useState("direct_order");
   const [products, setProducts] = useState([]);
+  const [cartItemQuantity, setCartItemQuantity] = useState([]);
+  const [isChecked, setIsChecked] = useState([]);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   const [ordererName, setOrdererName] = useState("");
   const [ordererPhoneNumber, setOrdererPhoneNumber] = useState(["", "", ""]);
@@ -25,12 +28,12 @@ function Payment() {
   let navigate = useNavigate();
   let location = useLocation();
 
-  console.log(location.state);
-
   useEffect(() => {
     if (kind === "1" || kind === "3") {
       directOrder();
     } else if (kind === "2") {
+      setOrderKind("cart_order");
+      cartOrder();
     }
   }, []);
   useEffect(() => {
@@ -48,6 +51,20 @@ function Payment() {
       .catch((err) => {
         console.log(err);
       });
+  }
+  function cartOrder() {
+    setProducts(location.state.common);
+    setCartItemQuantity(location.state.cartItemQuantity);
+    setIsChecked(location.state.isChecked);
+    let copyTotalPrice = cartTotalPrice;
+    location.state.common.forEach((product, i) => {
+      if (location.state.isChecked[i]) {
+        copyTotalPrice +=
+          product.price * location.state.cartItemQuantity[i] +
+          product.shipping_fee;
+        setCartTotalPrice(copyTotalPrice);
+      }
+    });
   }
 
   function isSetAllCheck() {
@@ -69,34 +86,65 @@ function Payment() {
   }
 
   function handelSubmit(e) {
+    console.log(cartTotalPrice);
     if (allCheck) {
-      axios
-        .post(
-          "http://13.209.150.154:8000/order/",
-          {
-            product_id: id,
-            quantity: count,
-            order_kind: orderKind,
-            receiver: deleveryName,
-            receiver_phone_number: deleveryPhoneNumber.join(""),
-            address: deleveryAddress,
-            address_message: deleveryMessage,
-            payment_method: paymentMethod,
-            total_price: totalPrice + totalFee,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `JWT ${localStorage.getItem("acessToken")}`,
+      console.log(kind);
+      if (kind === "1" || kind === "3") {
+        axios
+          .post(
+            "http://13.209.150.154:8000/order/",
+            {
+              product_id: id,
+              quantity: count,
+              order_kind: orderKind,
+              receiver: deleveryName,
+              receiver_phone_number: deleveryPhoneNumber.join(""),
+              address: deleveryAddress,
+              address_message: deleveryMessage,
+              payment_method: paymentMethod,
+              total_price: totalPrice + totalFee,
             },
-          }
-        )
-        .then((response) => {
-          navigate("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `JWT ${localStorage.getItem("acessToken")}`,
+              },
+            }
+          )
+          .then((response) => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else if (kind === "2") {
+        console.log(cartTotalPrice);
+        axios
+          .post(
+            "http://13.209.150.154:8000/order/",
+            {
+              total_price: cartTotalPrice,
+              order_kind: orderKind,
+              receiver: deleveryName,
+              receiver_phone_number: deleveryPhoneNumber.join(""),
+              address: deleveryAddress,
+              address_message: deleveryMessage,
+              payment_method: paymentMethod,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `JWT ${localStorage.getItem("acessToken")}`,
+              },
+            }
+          )
+          .then((response) => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   }
 
@@ -105,7 +153,13 @@ function Payment() {
       <Header />
       <section className="payment">
         <h2>주문/결제하기</h2>
-        <PaymentProductsList products={products} productCount={count} />
+        <PaymentProductsList
+          products={products}
+          cartItemQuantity={cartItemQuantity}
+          isChecked={isChecked}
+          orderKind={orderKind}
+          productCount={count}
+        />
         <section className="deliveryPayment">
           <h3 className="blind">배송 및 결제 정보</h3>
           <form method="post">
@@ -395,8 +449,12 @@ function Payment() {
 }
 
 function PaymentProductsList(props) {
-  const products = [props.products];
+  const products =
+    props.orderKind === "direct_order" ? [props.products] : props.products;
   const productCount = props.productCount;
+  const cartItemQuantity = props.cartItemQuantity;
+  const isChecked = props.isChecked;
+  const orderKind = props.orderKind;
   let totalPrice = 0;
   return (
     <>
@@ -408,7 +466,17 @@ function PaymentProductsList(props) {
       </ul>
       <ul className="productList">
         {products.map((product, i) => {
-          totalPrice += product.price * productCount + product.shipping_fee;
+          console.log(totalPrice, product);
+          if (!isChecked[i]) {
+            return "";
+          }
+          if (isChecked[i] && orderKind === "cart_order") {
+            totalPrice +=
+              product.price * cartItemQuantity[i] + product.shipping_fee;
+          } else if (orderKind === "cart_order") {
+            totalPrice += product.price * productCount + product.shipping_fee;
+          }
+
           return (
             <li key={i}>
               <div className="introduce">
@@ -418,7 +486,13 @@ function PaymentProductsList(props) {
                   <dl>
                     <dt>{product.product_name}</dt>
                     <dd>
-                      수량: <strong>{productCount}</strong>개
+                      수량:
+                      <strong>
+                        {orderKind === "direct_order"
+                          ? productCount
+                          : cartItemQuantity[i]}
+                      </strong>
+                      개
                     </dd>
                   </dl>
                 </div>
@@ -442,10 +516,10 @@ function PaymentProductsList(props) {
               <div className="price">
                 <p>
                   <strong>
-                    {(product.price * productCount + "").replace(
-                      /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                      ","
-                    )}
+                    {(orderKind === "direct_order"
+                      ? product.price * productCount + ""
+                      : product.price * cartItemQuantity[i] + ""
+                    ).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                   </strong>
                   원
                 </p>
