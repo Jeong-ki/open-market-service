@@ -38,7 +38,20 @@ function Payment() {
   }, []);
   useEffect(() => {
     isSetAllCheck();
+    cartTotalPriceAdd();
   });
+
+  function cartTotalPriceAdd() {
+    let copyTotalPrice = 0;
+    location.state.common.forEach((product, i) => {
+      if (location.state.isChecked[i]) {
+        copyTotalPrice +=
+          product.price * location.state.cartItemQuantity[i] +
+          product.shipping_fee;
+      }
+    });
+    setCartTotalPrice(copyTotalPrice);
+  }
 
   function directOrder() {
     axios
@@ -52,19 +65,11 @@ function Payment() {
         console.log(err);
       });
   }
+
   function cartOrder() {
     setProducts(location.state.common);
     setCartItemQuantity(location.state.cartItemQuantity);
     setIsChecked(location.state.isChecked);
-    let copyTotalPrice = cartTotalPrice;
-    location.state.common.forEach((product, i) => {
-      if (location.state.isChecked[i]) {
-        copyTotalPrice +=
-          product.price * location.state.cartItemQuantity[i] +
-          product.shipping_fee;
-        setCartTotalPrice(copyTotalPrice);
-      }
-    });
   }
 
   function isSetAllCheck() {
@@ -85,10 +90,8 @@ function Payment() {
     }
   }
 
-  function handelSubmit(e) {
-    console.log(cartTotalPrice);
+  function handelSubmit() {
     if (allCheck) {
-      console.log(kind);
       if (kind === "1" || kind === "3") {
         axios
           .post(
@@ -118,13 +121,20 @@ function Payment() {
             console.log(err);
           });
       } else if (kind === "2") {
-        console.log(cartTotalPrice);
+        console.log(
+          cartTotalPrice,
+          deleveryName,
+          deleveryPhoneNumber.join(""),
+          deleveryAddress,
+          deleveryMessage,
+          paymentMethod
+        );
         axios
           .post(
             "http://13.209.150.154:8000/order/",
             {
               total_price: cartTotalPrice,
-              order_kind: orderKind,
+              order_kind: "cart_order",
               receiver: deleveryName,
               receiver_phone_number: deleveryPhoneNumber.join(""),
               address: deleveryAddress,
@@ -466,7 +476,6 @@ function PaymentProductsList(props) {
       </ul>
       <ul className="productList">
         {products.map((product, i) => {
-          console.log(totalPrice, product);
           if (!isChecked[i]) {
             return "";
           }
