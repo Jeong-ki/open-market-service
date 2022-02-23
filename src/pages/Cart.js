@@ -187,6 +187,7 @@ function CartPage() {
 function CartItem(props) {
   let navigate = useNavigate();
   const common = props.common;
+  console.log(common);
   const cartItemQuantity = props.cartItemQuantity;
   const cartItemId = props.cartItemId;
   const isChecked = props.isChecked;
@@ -289,7 +290,6 @@ function CartItem(props) {
                 type="button"
                 className="orderBtn"
                 onClick={() => {
-                  console.log(item.product_id, cartItemQuantity[i]);
                   navigate(
                     `/payment/${item.product_id}/${cartItemQuantity[i]}/3`
                   );
