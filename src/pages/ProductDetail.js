@@ -20,6 +20,7 @@ function ProductDetailPage() {
       .get("http://13.209.150.154:8000/products/" + id)
       .then((response) => {
         setProduct(response.data);
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -140,8 +141,10 @@ function ProductDetailPage() {
                 </p>
                 <p className="maximumPrice">
                   <strong>
-                    {product.price * productCount +
-                      "".replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                    {(product.price * productCount + "").replace(
+                      /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                      ","
+                    )}
                   </strong>
                   원
                 </p>
@@ -154,7 +157,11 @@ function ProductDetailPage() {
               >
                 바로 구매
               </a>
-              <a href={userType ? "/cart" : null} className={userType ? "basket" : "basket disabled"} onClick={cartProductAdd}>
+              <a
+                href={userType ? "/cart" : null}
+                className={userType ? "basket" : "basket disabled"}
+                onClick={cartProductAdd}
+              >
                 장바구니
               </a>
             </div>
