@@ -70,6 +70,16 @@ function Payment() {
     setProducts(location.state.common);
     setCartItemQuantity(location.state.cartItemQuantity);
     setIsChecked(location.state.isChecked);
+    let copyTotalPrice = 0;
+    let copyTotalFee = 0;
+    location.state.common.forEach((product, i) => {
+      if (location.state.isChecked[i]) {
+        copyTotalPrice += product.price * location.state.cartItemQuantity[i];
+        copyTotalFee += product.shipping_fee;
+      }
+    });
+    setTotalPrice(copyTotalPrice);
+    setTotalFee(copyTotalFee);
   }
 
   function isSetAllCheck() {
@@ -121,14 +131,6 @@ function Payment() {
             console.log(err);
           });
       } else if (kind === "2") {
-        console.log(
-          cartTotalPrice,
-          deleveryName,
-          deleveryPhoneNumber.join(""),
-          deleveryAddress,
-          deleveryMessage,
-          paymentMethod
-        );
         axios
           .post(
             "http://13.209.150.154:8000/order/",
@@ -152,7 +154,7 @@ function Payment() {
             navigate("/");
           })
           .catch((err) => {
-            console.log(err);
+            navigate("/");
           });
       }
     }
@@ -407,7 +409,13 @@ function Payment() {
                     <dl className="paymentList">
                       <dt>상품금액</dt>
                       <dd>
-                        <strong>{totalPrice}</strong>원
+                        <strong>
+                          {(totalPrice + "").replace(
+                            /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                            ","
+                          )}
+                        </strong>
+                        원
                       </dd>
                       <dt>할인금액</dt>
                       <dd>
@@ -415,13 +423,26 @@ function Payment() {
                       </dd>
                       <dt>배송비</dt>
                       <dd>
-                        <strong>{totalFee}</strong>원
+                        <strong>
+                          {(totalFee + "").replace(
+                            /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                            ","
+                          )}
+                        </strong>
+                        원
                       </dd>
                     </dl>
                     <dl className="finalPay">
                       <dt>결제금액</dt>
                       <dd>
-                        <strong>{totalPrice + totalFee}</strong>원
+                        <strong>
+                          {" "}
+                          {(totalPrice + totalFee + "").replace(
+                            /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                            ","
+                          )}
+                        </strong>
+                        원
                       </dd>
                     </dl>
                   </div>

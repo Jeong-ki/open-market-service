@@ -11,6 +11,7 @@ import remove from "../images/icon-delete.svg";
 
 function CartPage() {
   let navigate = useNavigate();
+
   let cartList;
   let products;
   const [common, setCommon] = useState([]);
@@ -21,6 +22,7 @@ function CartPage() {
   const [deleteItemInfo, setDeleteItemInfo] = useState(0);
   const [pickItem, setPickItem] = useState(0);
 
+  //모달 on off
   const [isModal, setIsModal] = useState(false);
   const [isCartItem, SetIsCartItem] = useState(false);
   const [isChecked, setIsChecked] = useState([]);
@@ -187,7 +189,6 @@ function CartPage() {
 function CartItem(props) {
   let navigate = useNavigate();
   const common = props.common;
-  console.log(common);
   const cartItemQuantity = props.cartItemQuantity;
   const cartItemId = props.cartItemId;
   const isChecked = props.isChecked;
