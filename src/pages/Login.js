@@ -12,12 +12,11 @@ function Login() {
   //포커스 이동하기 Ref
   const idDom = React.useRef(null);
   const passwordDom = React.useRef(null);
-
   //이전 페이지로 이동을 위해 사용
   let navigate = useNavigate();
 
   //로그인 버튼 클릭시
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
     //아이디 또는 비밀번호 미기입 시
     if (!id || !password) {
@@ -36,13 +35,12 @@ function Login() {
       };
       postData(data);
     }
-  };
+  }
 
   function postData(data) {
     axios
       .post("http://13.209.150.154:8000/accounts/login/", data)
       .then((response) => {
-        console.log(response);
         localStorage.setItem("acessToken", response.data.token);
         localStorage.setItem("userType", response.data.user_type);
         navigate(-1);
@@ -55,32 +53,34 @@ function Login() {
   }
 
   return (
-    <div className="login">
+    <div className="loginContainer">
       <h1>
         <img src={logo} alt="오픈마켓" />
       </h1>
       <section>
         <h2 className="blind">로그인</h2>
-        <button
-          className={
-            "loginChange " + "purchase " + (loginType === "BUYER" ? "on" : "")
-          }
-          onClick={() => {
-            setLoginType("BUYER");
-          }}
-        >
-          구매회원 로그인
-        </button>
-        <button
-          className={
-            "loginChange " + "sale " + (loginType === "SELLER" ? "on" : "")
-          }
-          onClick={() => {
-            setLoginType("SELLER");
-          }}
-        >
-          판매회원 로그인
-        </button>
+        <div className="loginTypeBtn">
+          <button
+            className={
+              "loginChange " + "purchase " + (loginType === "BUYER" ? "on" : "")
+            }
+            onClick={() => {
+              setLoginType("BUYER");
+            }}
+          >
+            구매회원 로그인
+          </button>
+          <button
+            className={
+              "loginChange " + "sale " + (loginType === "SELLER" ? "on" : "")
+            }
+            onClick={() => {
+              setLoginType("SELLER");
+            }}
+          >
+            판매회원 로그인
+          </button>
+        </div>
         <div className="loginForm">
           <form action="/" method="post">
             <fieldset>

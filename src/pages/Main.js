@@ -7,8 +7,8 @@ import right from "../images/icon-swiper-2.svg";
 function Main() {
   const [isLoading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-
   const [currentImg, setCurrentImg] = useState(1);
+
   useEffect(() => {
     axios
       .get("http://13.209.150.154:8000/products/")

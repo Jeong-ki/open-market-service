@@ -114,7 +114,8 @@
             height: 2.66em;
             min-width: 15px;
             min-height: 15px;
-            background: url($imgUrl + "icon-shopping-bag.svg") center center/contain;
+            background: url($imgUrl + "icon-shopping-bag.svg") center
+              center/contain;
             margin-right: 0.8em;
           }
         }
