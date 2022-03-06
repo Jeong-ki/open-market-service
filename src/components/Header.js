@@ -5,7 +5,9 @@ import logo from "../images/logo.png";
 function Header() {
   // 페이지로 이동을 위해 사용
   let navigate = useNavigate();
-  let logiStatus = localStorage.getItem("acessToken") ? localStorage.getItem("userType") : false;
+  let logiStatus = localStorage.getItem("acessToken")
+    ? localStorage.getItem("userType")
+    : false;
 
   function loginLogout(e) {
     e.preventDefault();
@@ -34,9 +36,7 @@ function Header() {
           </fieldset>
         </form>
         <ul>
-          {
-            logiStatus === "SELLER" 
-            ? 
+          {logiStatus === "SELLER" ? (
             <ul>
               <li className="login">
                 <a href="/login" onClick={loginLogout}>
@@ -44,10 +44,12 @@ function Header() {
                 </a>
               </li>
               <li className="seller">
-                <Link to="/dashBoard" className="sellerCenter">판매자 센터</Link>
+                <Link to="/dashBoard" className="sellerCenter">
+                  판매자 센터
+                </Link>
               </li>
             </ul>
-            : 
+          ) : (
             <ul>
               <li className="basket">
                 <a href="/cart">
@@ -60,8 +62,7 @@ function Header() {
                 </a>
               </li>
             </ul>
-          }
-          
+          )}
         </ul>
       </nav>
     </header>
