@@ -4,12 +4,12 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main/Main";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./pages/productDetail/ProductDetail";
 import Order from "./pages/Order";
 import DashBoard from "./pages/DashBoard";
 import AddProduct from "./pages/AddProduct";
 import Error from "./pages/Error";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart/Cart";
 import Payment from "./pages/Payment";
 
 function App() {

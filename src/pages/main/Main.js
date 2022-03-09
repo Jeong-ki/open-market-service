@@ -7,7 +7,7 @@ import ImgSlide from "./ImgSlide";
 import ProductLi from "./ProductList";
 
 function Main() {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function Main() {
       .get("http://13.209.150.154:8000/products/")
       .then((response) => {
         setProducts(response.data.results);
-        setLoading(true);
+        setIsLoading(true);
       })
       .catch((err) => {
         console.log(err);
