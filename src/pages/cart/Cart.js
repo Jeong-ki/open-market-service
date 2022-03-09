@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Modal from "../components/Modal";
+import Header from "../../components/Header";
+import Modal from "../../components/Modal";
 
-import minus from "../images/icon-minus-line.svg";
-import plus from "../images/icon-plus-line.svg";
-import remove from "../images/icon-delete.svg";
+import minus from "../../images/icon-minus-line.svg";
+import plus from "../../images/icon-plus-line.svg";
+import remove from "../../images/icon-delete.svg";
 
 function CartPage() {
   let navigate = useNavigate();
@@ -171,7 +171,6 @@ function CartPage() {
             setIsModal={setIsModal}
             SetIsCartItem={SetIsCartItem}
             productCountPlusMinus={productCountPlusMinus}
-            setIsModal={setIsModal}
             modalMethod={modalMethod}
             pickItem={pickItem}
             deleteItemInfo={deleteItemInfo}
