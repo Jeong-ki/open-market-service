@@ -10,7 +10,7 @@ import DashBoard from "./pages/DashBoard";
 import AddProduct from "./pages/AddProduct";
 import Error from "./pages/Error";
 import Cart from "./pages/cart/Cart";
-import Payment from "./pages/Payment";
+import Payment from "./pages/payment/Payment";
 
 function App() {
   return (
