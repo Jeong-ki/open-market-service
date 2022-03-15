@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import DashHeader from "../components/DashHeader";
+import DashHeader from "../../components/DashHeader";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-import remove from "../images/icon-delete.svg";
+import DelModal from "./DelModal.js";
+import ProductList from "./ProductList";
 
 function DashBoard() {
   const navigate = useNavigate();
@@ -24,7 +25,6 @@ function DashBoard() {
         }
       });
       if(response) {
-        console.log("response: ", response.data.results);
         setProducts(response.data.results);
       } else {
         navigate("/error");
@@ -39,7 +39,6 @@ function DashBoard() {
   };
 
   async function productDel(product_id) {
-    console.log("삭제", product_id);
     try {
       const response = await axios.delete(`http://13.209.150.154:8000/products/${product_id}`, {
         headers: {
@@ -48,7 +47,6 @@ function DashBoard() {
         }
       });
       if(response) {
-        console.log("del response: ", response);
         setProductCheck(!productCheck);
         setDelModal(false);
       } else {
@@ -62,48 +60,32 @@ function DashBoard() {
     }
   };
 
-  function ProductList(props) {
-    return (
-      <ul className="products">
-        {
-          props.products.map((product) => {
-            return (
-              <li key={product.product_id}>
-                <div>
-                  <img src={product.image} alt={product.product_name + "이미지"} />
-                  <p>{product.product_name}</p>
-                  <p>재고 : {product.stock}개</p>
-                </div>
-                <div className="price">{product.price}원</div>
-                <div className="box-update">
-                  <Link to="/addProduct" state={{product: product}} className="update">수정</Link>
-                </div>
-                <div className="box-delete">
-                  <button onClick={() => { setDelModal(product.product_id) }} className="delete">삭제</button>
-                </div>
-              </li>
-            )
-          })
-        }
-      </ul>
-    );
-  }
-
-  function DelModal() {
-    return (
-      <div className="modal">
-        <div className="modal_overlay"></div>
-        <div className="modal_content">
-          <p>상품을 삭제하시겠습니까?</p>
-          <button onClick={() => { setDelModal(false) }} className="modalBtn modalX">취소</button>
-          <button onClick={() => { productDel(delModal) }} className="modalBtn modalO">확인</button>
-          <button onClick={() => { setDelModal(false) }} type="button" className="modalCancel">
-            <img src={remove} alt="상품 취소" />
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // function ProductList(props) {
+  //   return (
+  //     <ul className="products">
+  //       {
+  //         props.products.map((product) => {
+  //           return (
+  //             <li key={product.product_id}>
+  //               <div>
+  //                 <img src={product.image} alt={product.product_name + "이미지"} />
+  //                 <p>{product.product_name}</p>
+  //                 <p>재고 : {product.stock}개</p>
+  //               </div>
+  //               <div className="price">{product.price}원</div>
+  //               <div className="box-update">
+  //                 <Link to="/addProduct" state={{product: product}} className="update">수정</Link>
+  //               </div>
+  //               <div className="box-delete">
+  //                 <button onClick={() => { setDelModal(product.product_id) }} className="delete">삭제</button>
+  //               </div>
+  //             </li>
+  //           )
+  //         })
+  //       }
+  //     </ul>
+  //   );
+  // }
 
   return (
     <>
@@ -133,12 +115,12 @@ function DashBoard() {
               <li>수정</li>
               <li>삭제</li>
             </ul>
-            <ProductList products={products} />
+            <ProductList products={products} setDelModal={setDelModal} />
           </article>
         </div>
         {
           delModal
-          ? <DelModal />
+          ? <DelModal delModal={delModal} setDelModal={setDelModal} productDel={productDel} />
           : null
         }
       </section>

@@ -43,13 +43,13 @@
       bottom: 0.5208vw;
       margin: 0 auto;
       padding: 0 1.8229vw;
-      width: 24.8438vw;
+      width: 24.79vw;
       border: 0.0521vw solid nth($gray, 2);
       // border-top: none; 
 
       background-color: #fff;
       border-radius: 0.5208vw;
-      padding-bottom: 1.25vw;
+      padding-bottom: 2.25vw;
       label {
         display: block;
         text-align: left;
@@ -96,6 +96,7 @@
         $c: &;
         position: relative;
         & .pwWrong {
+          font-size: 0.8333vw;
           text-align: start;
           color: #eb5757;
           margin-bottom: 0.7292vw;
@@ -174,16 +175,22 @@
       .numWrong {
         text-align: start;
         color: #eb5757;
+        font-size: 0.8333vw;
         margin-bottom: 0.7292vw;
       }
 
       .email {
-        input {
-          width: 10.4948vw;
-        }
-        span {
-          font-size: 0.8333vw;
-          margin: 0 0.5vw;
+        .emailInp {
+          display: flex;
+          align-items: center;
+          input {
+            width: 10.3948vw;
+            margin-bottom: 0;
+          }
+          span {
+            font-size: 0.8333vw;
+            margin: 0 0.5vw;
+          }
         }
       }
 
@@ -203,7 +210,7 @@
       justify-content: center;
       .check-agree {
         display: flex;
-        width: 25vw;
+        width: 26vw;
         margin-top: 1.7708vw;
         text-align: left;
         font-size: 0.8333vw;
