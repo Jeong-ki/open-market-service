@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProductDetail from "./pages/productDetail/ProductDetail";
 import Order from "./pages/Order";
-import DashBoard from "./pages/DashBoard";
+import DashBoard from "./pages/DashBoard/DashBoard";
 import AddProduct from "./pages/AddProduct";
 import Error from "./pages/Error";
 import Cart from "./pages/cart/Cart";

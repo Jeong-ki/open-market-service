@@ -3,22 +3,22 @@
 .register {
   text-align: center;
   h1 {
-    margin: 70px 0 70px;
+    margin: 3.6458vw 0 3.6458vw;
     img {
-      width: 238px;
+      width: 12.3958vw;
     }
   }
   section {
     position: relative;
     .changeReg {
       position: relative;
-      padding: 20px 0 30px;
-      width: 275px;
-      border: 1px solid nth($gray, 2);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      padding: 1.0417vw 0 1.5625vw;
+      width: 14.3229vw;
+      border: 0.0521vw solid nth($gray, 2);
+      border-top-left-radius: 0.5208vw;
+      border-top-right-radius: 0.5208vw;
       font-family: $f5;
-      font-size: 18px;
+      font-size: 0.9375vw;
       &.buyer {
         background-color: nth($gray, 3);
       }
@@ -40,26 +40,27 @@
     }
     .registerForm {
       position: relative;
-      bottom: 10px;
+      bottom: 0.5208vw;
       margin: 0 auto;
-      padding: 0 35px;
-      width: 477px;
-      border: 1px solid nth($gray, 2);
+      padding: 0 1.8229vw;
+      width: 24.79vw;
+      border: 0.0521vw solid nth($gray, 2);
       // border-top: none; 
 
       background-color: #fff;
-      border-radius: 10px;
-      padding-bottom: 24px;
+      border-radius: 0.5208vw;
+      padding-bottom: 2.25vw;
       label {
         display: block;
         text-align: left;
-        margin-bottom: 10px;
+        font-size: 0.8333vw;
+        margin-bottom: 0.5208vw;
         color: nth($gray, 1);
         &.id {
-          margin-top: 50px;
+          margin-top: 2.6042vw;
         }
         &.nameLabel {
-          margin-top: 50px;
+          margin-top: 2.6042vw;
         }
       }
       input:focus {
@@ -67,37 +68,38 @@
       }
       input {
         padding: 0;
-        padding-left: 16px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid nth($gray, 2);
-        height: 51.5px;
-        margin-bottom: 12px;
+        padding-left: 0.8333vw;
+        font-size: 0.8333vw;
+        border-radius: 0.2604vw;
+        border: 0.0521vw solid nth($gray, 2);
+        height: 2.6823vw;
+        margin-bottom: 0.6250vw;
         &:focus,
         &:active {
           border-color: $green;
         }
         &#id {
-          width: 327.5px;
-          margin-right: 12px;
+          width: 17.0573vw;
+          margin-right: 0.6250vw;
         }
         &#pw,
         &#checkPw,
         &#name {
-          width: 461.5px;
+          width: 24.0365vw;
         }
         &#name,
         &#lastNumber {
-          margin-bottom: 16px;
+          margin-bottom: 0.8333vw;
         }
       }
       .inpPw {
         $c: &;
         position: relative;
         & .pwWrong {
+          font-size: 0.8333vw;
           text-align: start;
           color: #eb5757;
-          margin-bottom: 14px;
+          margin-bottom: 0.7292vw;
           #{c} input {
             border-color: red;
           }
@@ -105,46 +107,48 @@
       }
       img {
         position: absolute;
-        right: 16px;
-        top: 13px;
+        width: 1.4583vw;
+        height: 1.4583vw;
+        right: 0.8vw;
+        top: 0.709vw;
       }
       button {
         color: #fff;
         background-color: $green;
-        width: 122px;
-        height: 54px;
-        font-size: 16px;
-        border-radius: 5px;
+        width: 6.3542vw;
+        height: 2.8125vw;
+        font-size: 0.8333vw;
+        border-radius: 0.2604vw;
       }
       .phoneNumber {
         display: flex;
         input {
           text-align: center;
-          padding: 0 8px;
-          width: 133.5px;
+          padding: 0 0.0417vw;
+          width: 6.9531vw;
         }
         #middleNumber {
-          margin: 0 12px;
+          margin: 0 0.6250vw;
         }
         .firstNumBtn {
           position: relative;
           width: 100%;
           color: #000;
           background-color: #fff;
-          border: 1px solid nth($gray, 2);
-          font-size: 16px;
-          padding-right: 25px;
+          border: 0.0521vw solid nth($gray, 2);
+          font-size: 0.8333vw;
+          padding-right: 1.3021vw;
           &::after {
             content: "";
             position: absolute;
-            right: 18.58px;
-            top: 24.25px;
-            width: 8px;
-            height: 8px;
-            border-radius: 1px;
+            right: 0.9677vw;
+            top: 1.2630vw;
+            width: 0.4167vw;
+            height: 0.4167vw;
+            border-radius: 0.0521vw;
             transition: all 0.5s;
             border: solid nth($gray, 1);
-            border-width: 0 2.5px 2.5px 0;
+            border-width: 0 0.1302vw 0.1302vw 0;
             transform: rotate(225deg);
           }
           &.on::after {
@@ -153,45 +157,52 @@
         }
         #firstNumber {
           position: absolute;
-          margin-top: 60px;
-          width: 152px;
-          height: 150px;
+          margin-top: 3.1250vw;
+          width: 7.9167vw;
+          height: 7.8125vw;
           overflow-y: scroll;
-          border-radius: 5px;
-          border: 1px solid nth($gray, 2);
+          border-radius: 0.2604vw;
+          border: 0.0521vw solid nth($gray, 2);
           button {
             width: 100%;
             color: #000;
             background-color: #fff;
             border-radius: 0;
-            height: 40px;
+            height: 2.0833vw;
           }
         }
       }
       .numWrong {
         text-align: start;
         color: #eb5757;
-        margin-bottom: 14px;
+        font-size: 0.8333vw;
+        margin-bottom: 0.7292vw;
       }
 
       .email {
-        input {
-          width: 201.5px;
-        }
-        span {
-          margin: 0 11px;
+        .emailInp {
+          display: flex;
+          align-items: center;
+          input {
+            width: 10.3948vw;
+            margin-bottom: 0;
+          }
+          span {
+            font-size: 0.8333vw;
+            margin: 0 0.5vw;
+          }
         }
       }
 
       .buyerNum {
-        margin-top: 38px;
+        margin-top: 1.9792vw;
         #bNum {
-          width: 321.52px;
-          margin-right: 12px;
+          width: 16.7458vw;
+          margin-right: 0.6250vw;
         }
       }
       #storeName {
-        width: 461.5px;
+        width: 24.0365vw;
       }
     }
     .box-check {
@@ -199,9 +210,10 @@
       justify-content: center;
       .check-agree {
         display: flex;
-        width: 480px;
-        margin-top: 34px;
+        width: 26vw;
+        margin-top: 1.7708vw;
         text-align: left;
+        font-size: 0.8333vw;
 
         input[type="checkbox"] {
           cursor: pointer;
@@ -209,15 +221,15 @@
           -moz-appearance: none;
           appearance: none;
           outline: 0;
-          height: 16px;
-          width: 16px;
-          border: 1px solid nth($gray, 2);
+          height: 3.8333vw;
+          width: 3.8333vw;
+          border: 0.0521vw solid nth($gray, 2);
         }
         input[type="checkbox"]:checked {
-          border: 1px solid $green;
+          border: 0.0521vw solid $green;
         }
         input[type="checkbox"]:hover {
-          border: 1px solid $green;
+          border: 0.0521vw solid $green;
         }
         input[type="checkbox"]:after {
           content: "";
@@ -227,7 +239,7 @@
           width: 15%;
           height: 40%;
           border: solid $green;
-          border-width: 0 2px 2px 0;
+          border-width: 0 0.1042vw 0.1042vw 0;
           transform: rotate(45deg);
           display: none;
         }
@@ -237,10 +249,10 @@
 
         #agree {
           display: block;
-          width: 16px;
-          height: 16px;
-          margin-right: 10px;
-          margin-top: 1;
+          width: 0.8333vw;
+          height: 0.8333vw;
+          margin-right: 0.5208vw;
+          margin-top: 0.0521vw;
         }
         label {
           color: nth($gray, 1);
@@ -256,11 +268,11 @@
     .submitBtn {
       background-color: $green;
       color: #fff;
-      width: 480px;
-      height: 60px;
-      margin: 34px 0 110px;
-      border-radius: 5px;
-      font-size: 18px;
+      width: 25vw;
+      height: 3.1250vw;
+      margin: 1.7708vw 0 5.7292vw;
+      border-radius: 0.2604vw;
+      font-size: 0.9375vw;
       font-family: $f5;
       &:disabled {
         background-color: nth($gray, 2);

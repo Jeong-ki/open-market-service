@@ -294,12 +294,14 @@ function RegisterPage() {
 
               <div className="email">
                 <label htmlFor="email">이메일</label>
-                <input onChange={handleEmailChange} id="email" type="text" />
-                <span>@</span>
-                <label htmlFor="dotcom" className="blind">
-                  메일닷컴
-                </label>
-                <input onChange={handleDotcomChange} id="dotcom" type="text" />
+                <div className="emailInp">
+                  <input onChange={handleEmailChange} id="email" type="text" />
+                  <span>@</span>
+                  <label htmlFor="dotcom" className="blind">
+                    메일닷컴
+                  </label>
+                  <input onChange={handleDotcomChange} id="dotcom" type="text" />
+                </div>
               </div>
               {
                 emailCheck && dotcomCheck
