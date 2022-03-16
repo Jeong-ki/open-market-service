@@ -6,7 +6,8 @@ function PaymentProductsList(props) {
     props.orderKind === "direct_order" ? [props.products] : props.products;
   const productCount = props.productCount;
   const cartItemQuantity = props.cartItemQuantity;
-  const isChecked = props.isChecked;
+  const isChecked =
+    props.orderKind === "direct_order" ? [true] : props.isChecked;
   const orderKind = props.orderKind;
   let totalPrice = 0;
   return (
@@ -21,13 +22,15 @@ function PaymentProductsList(props) {
         {products.map((product, i) => {
           if (!isChecked[i]) {
             return "";
-          }
-          if (isChecked[i] && orderKind === "cart_order") {
+          } else if (orderKind === "direct_order") {
+            totalPrice += product.price * productCount + product.shipping_fee;
+          } else if (orderKind === "cart_order") {
             totalPrice +=
               product.price * cartItemQuantity[i] + product.shipping_fee;
-          } else if (orderKind === "cart_order") {
-            totalPrice += product.price * productCount + product.shipping_fee;
           }
+          // else if (orderKind === "cart_order") {
+          //   totalPrice += product.price * productCount + product.shipping_fee;
+          // }
 
           return (
             <li key={i}>
