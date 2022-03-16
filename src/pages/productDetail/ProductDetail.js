@@ -115,7 +115,9 @@ function ProductDetailPage() {
                 <div className="purchase">
                   <a
                     href={
-                      userType ? "/payment/" + id + "/" + productCount : null
+                      userType
+                        ? "/payment/" + id + "/" + productCount + "/1"
+                        : null
                     }
                     className={userType ? "rightAway" : "rightAway disabled"}
                   >

@@ -29,7 +29,6 @@ function Payment() {
 
   let navigate = useNavigate();
   let location = useLocation();
-
   useEffect(() => {
     if (kind === "1" || kind === "3") {
       directOrder();
@@ -40,7 +39,9 @@ function Payment() {
   }, []);
   useEffect(() => {
     isSetAllCheck();
-    cartTotalPriceAdd();
+    if (!!location.state) {
+      cartTotalPriceAdd();
+    }
   });
 
   function cartTotalPriceAdd() {
