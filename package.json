@@ -16,10 +16,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://illustrious-kringle-8f2dfb.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
