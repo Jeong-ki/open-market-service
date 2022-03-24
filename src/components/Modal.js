@@ -8,7 +8,6 @@ import plus from "../images/icon-plus-line.svg";
 function Modal(props) {
   const modalMethod = props.modalMethod;
   const deleteItemInfo = props.deleteItemInfo;
-  let navigate = useNavigate();
 
   function cartItemDelete() {
     axios
