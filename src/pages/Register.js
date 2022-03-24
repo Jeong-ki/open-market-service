@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../images/logo.png";
 import pwCheck from "../images/icon-check-off.svg";
 import pwCheckOn from "../images/icon-check-on.svg";
-import { useState } from "react/cjs/react.development";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 

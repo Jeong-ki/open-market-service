@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useEffect, useState } from "react";
 import DashHeader from "../components/DashHeader";
 import iconImg from "../images/icon-img.png";
 import axios from "axios";

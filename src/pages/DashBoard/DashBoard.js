@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DashHeader from "../../components/DashHeader";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
 import DelModal from "./DelModal.js";
 import ProductList from "./ProductList";
 
