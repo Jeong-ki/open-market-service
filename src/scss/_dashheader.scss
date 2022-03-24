@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.dashHeader {
+  @include flex($a: center, $j: flex-start);
+  font-family: $f5;
+  padding: 26px 100px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+  h1 {
+    margin-right: 16px;
+    img {
+      height: 24px;
+    }
+  }
+}

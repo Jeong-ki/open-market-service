@@ -19,6 +19,7 @@ dd,
 ul,
 ol,
 li,
+button,
 blockquote,
 fieldset {
   margin: 0;
@@ -101,6 +102,9 @@ button {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 caption {

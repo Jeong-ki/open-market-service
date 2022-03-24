@@ -24,7 +24,7 @@
   font-style: normal;
 }
 
-$gray: #767676, #c4c4c4, #f2f2f2;
+$gray: #767676, #c4c4c4, #f2f2f2, #e0e0e0;
 $green: #21bf48;
 $f7: "SpoqaHanSansNeo-Bold";
 $f5: "SpoqaHanSansNeo-Medium";
@@ -56,8 +56,9 @@ body {
   font-family: "SpoqaHanSansNeo-Regular";
 }
 
-@import "header", "footer";
+@import "header", "footer", "modal";
 
 // 순상
-@import "main", "login", "product";
+@import "main", "login", "product", "cart", "payment";
 // 기수
+@import "register", "dashheader", "dashboard", "addproduct", "error";

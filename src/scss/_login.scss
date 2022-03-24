@@ -1,65 +1,74 @@
 @charset "utf-8";
 
-.login {
+.loginContainer {
+  font-size: 0.93vw;
   text-align: center;
   h1 {
-    margin: 100px 0 70px;
+    margin: 5.55em 0 3.88em;
     img {
-      //238px
-      // width: 12.39vw;
-      width: 238px;
+      width: 13.22em;
     }
   }
   section {
     position: relative;
+    .loginTypeBtn {
+      width: 30.55em;
+      margin: 0 auto;
+    }
     .loginChange {
       position: relative;
-      padding: 20px 77px 30px;
+      width: 50%;
+      padding: 1.11em 0 1.66em;
       border-top: 1px solid nth($gray, 2);
       border-left: 1px solid nth($gray, 2);
-
+      border-right: 1px solid nth($gray, 2);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       font-family: $f5;
-      font-size: 18px;
       background-color: nth($gray, 3);
-      &.sale {
-        border-right: 1px solid nth($gray, 2);
-      }
+      box-sizing: border-box;
       &.on {
         background-color: #fff;
         z-index: 10;
       }
+      &.on.purchase {
+        border-right: none;
+      }
+      &.on.sale {
+        border-left: none;
+      }
     }
     .loginForm {
       position: relative;
-      bottom: 10px;
+      bottom: 0.75em;
       margin: 0 auto;
-      padding: 35px;
-      width: 550px;
+      padding: 1.94em;
+      width: 30.55em;
       border: 1px solid nth($gray, 2);
       border-radius: 10px;
       background-color: #fff;
       box-sizing: border-box;
       input {
         display: block;
+        font-size: 0.88em;
         width: 100%;
-        padding: 20px 0;
+        padding: 1.25em 0.625em;
         border: none;
         border-bottom: 1px solid nth($gray, 3);
         &:last-child {
-          margin-bottom: 10px;
+          margin-bottom: 0.625em;
         }
       }
       p {
-        margin-top: 26px;
+        font-size: 0.88em;
+        margin-top: 1.625em;
         text-align: left;
         color: #eb5757;
       }
       button {
-        margin-top: 26px;
+        margin-top: 1.44em;
         width: 100%;
-        padding: 19px 0;
+        padding: 1.05em 0;
         background-color: $green;
         color: #fff;
         border-radius: 5px;
@@ -68,14 +77,15 @@
     }
   }
   .join {
-    margin: 30px 0 18.43vw;
+    font-size: 0.88em;
+    margin: 1.875em 0 19.68em;
     span {
       &:first-child:after {
         content: "";
-        width: 2px;
+        width: 0.125em;
         height: 1em;
         //14
-        margin: -2px 0.72vw;
+        margin: -2px 0.875em;
         background-color: #000;
         display: inline-block;
       }
