@@ -1,0 +1,116 @@
+@charset "utf-8";
+.main {
+  font-size: 0.93vw;
+  .event {
+    //500
+    height: 26.04vw;
+    position: relative;
+    .slideBox {
+      overflow: hidden;
+      height: 100%;
+      ul.slide {
+        width: 300%;
+        height: inherit;
+        @include flex();
+        transition: 0.5s all;
+        transform: translateX(0);
+        &.two {
+          transform: translateX(-33.333%);
+        }
+        &.three {
+          transform: translateX(-66.666%);
+        }
+        li {
+          width: 100%;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+      }
+    }
+
+    div.lrBtn {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      @include flex;
+      img {
+        width: 3.12vw;
+      }
+    }
+    div.dotBtn {
+      width: 3.66em;
+      height: 1.66em;
+      position: absolute;
+      bottom: 1.11em;
+      left: 50%;
+      transform: translateX(-50%);
+      @include flex($a: center);
+      border-radius: 10px;
+      background-color: rgba(87, 87, 87, 0.877);
+      padding: 5px 10px;
+      span {
+        display: inline-block;
+        width: 0.44em;
+        height: 0.44em;
+        min-width: 8px;
+        min-height: 8px;
+        background: #fff;
+        border-radius: 50%;
+      }
+      span.select {
+        background: $green;
+      }
+    }
+  }
+
+  .products {
+    text-align: left;
+    .inner {
+      margin: 0 $lrcont;
+    }
+    ul {
+      @include flex($w: wrap, $j: flex-start);
+      margin: 4.44em 0 5.66em;
+      li {
+        width: calc((100% - 7.29vw) / 3);
+        margin-bottom: 4.33em;
+        &:nth-child(3n + 2) {
+          margin: 0 3.645vw;
+        }
+        a {
+          display: block;
+        }
+        div {
+          border-radius: 10px;
+          border: 1px solid nth($gray, 2);
+          &:after {
+            content: "";
+            padding-bottom: 100%;
+            display: block;
+          }
+        }
+        p {
+          font-size: 0.88em;
+          line-height: 1.25;
+          color: nth($gray, 1);
+          margin: 1em 0 0.625em;
+        }
+        dt {
+          line-height: 1.22;
+          margin-bottom: 0.55em;
+        }
+        dd {
+          font-size: 0.88em;
+          strong {
+            font-size: 1.5em;
+            line-height: 1.25;
+            margin-right: 2px;
+          }
+        }
+      }
+    }
+  }
+}

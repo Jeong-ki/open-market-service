@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+.product {
+  //359px -> 18.69
+  padding: 80px $lrcont 18.69vw;
+  //18px
+  font-size: 0.93vw;
+  article {
+    @include flex($a: top);
+    .imgBox {
+      //600
+      width: 31.25vw;
+      height: 31.25vw;
+    }
+    .explanation {
+      //630
+      width: 32.81vw;
+      .productIntro {
+        .company {
+          color: nth($gray, 1);
+          line-height: 1.22;
+        }
+        dl {
+          margin: 0.88em 0 1.11em;
+          dt {
+            font-size: 2em;
+            line-height: 1.25;
+            margin-bottom: 0.55em;
+          }
+          strong {
+            font-family: $f7;
+            font-size: 2em;
+            line-height: 1.25;
+            margin-right: 0.055em;
+          }
+        }
+        .delivery {
+          font-size: 0.88em;
+          margin: 8.625em 0 1.25em;
+          color: nth($gray, 1);
+        }
+      }
+
+      .amount {
+        padding: 1.66em 0;
+        border-top: 2px solid nth($gray, 2);
+        border-bottom: 2px solid nth($gray, 2);
+        div {
+          border: 1px solid nth($gray, 2);
+          border-radius: 5px;
+          display: inline-block;
+          .symbol {
+            padding: 0.83em 0.77em;
+            img {
+              width: 1.11em;
+            }
+            &:first-child {
+              border-right: 1px solid nth($gray, 2);
+            }
+            &:last-child {
+              border-left: 1px solid nth($gray, 2);
+            }
+          }
+          .volume {
+            padding: 0 1.11em;
+            line-height: 1.25;
+          }
+        }
+        p {
+          margin-top: 1.66em;
+          color: red;
+        }
+      }
+
+      .price {
+        @include flex($a: center);
+        margin: 1.77em 0 1.22em;
+        .maximum {
+          font-family: $f5;
+          line-height: 1.25;
+        }
+        div {
+          @include flex($a: center);
+          .maximumAmount {
+            color: nth($gray, 1);
+            @include flex($a: center);
+            &::after {
+              content: "";
+              width: 1px;
+              height: 1.27em;
+              display: inline-block;
+              background-color: nth($gray, 2);
+              margin: 0 11px;
+            }
+            strong {
+              font-family: $f7;
+              color: $green;
+              padding: 0 3px;
+            }
+          }
+          .maximumPrice {
+            color: $green;
+            strong {
+              //36
+              font-family: $f7;
+              font-size: 2em;
+              line-height: 1.25;
+              margin-right: 0.055em;
+            }
+          }
+        }
+      }
+      .purchase {
+        @include flex($a: center);
+        font-family: $f7;
+        color: #fff;
+        a {
+          padding: 1.05em 0;
+          border-radius: 5px;
+          display: block;
+          text-align: center;
+        }
+        .rightAway {
+          width: 66%;
+          background-color: $green;
+        }
+        .basket {
+          width: 31%;
+          background-color: nth($gray, 1);
+        }
+        .disabled {
+          background-color: nth($gray, 2);
+        }
+      }
+    }
+  }
+  .btnList {
+    @include flex($a: center);
+    text-align: center;
+    margin: 7.29vw 0 18.69vw;
+    li {
+      width: 25%;
+    }
+    button {
+      padding: 1.1em 0 1em;
+      width: 100%;
+      font-family: $f5;
+      color: nth($gray, 1);
+      border-bottom: 0.33em solid nth($gray, 4);
+      &.on {
+        color: $green;
+        border-bottom: 0.33em solid $green;
+      }
+    }
+  }
+}

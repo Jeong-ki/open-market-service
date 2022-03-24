@@ -1,0 +1,282 @@
+@charset "utf-8";
+
+.register {
+  text-align: center;
+  h1 {
+    margin: 3.6458vw 0 3.6458vw;
+    img {
+      width: 12.3958vw;
+    }
+  }
+  section {
+    position: relative;
+    .changeReg {
+      position: relative;
+      padding: 1.0417vw 0 1.5625vw;
+      width: 14.275vw;
+      border: 0.0521vw solid nth($gray, 2);
+      border-top-left-radius: 0.5208vw;
+      border-top-right-radius: 0.5208vw;
+      font-family: $f5;
+      font-size: 0.9375vw;
+      &.buyer {
+        background-color: nth($gray, 3);
+      }
+      &.buyer.on {
+        background-color: #fff;
+        border-bottom: none;
+        z-index: 10;
+        border-right: #fff;
+      }
+      &.seller {
+        background-color: nth($gray, 3);
+      }
+      &.seller.on {
+        background-color: #fff;
+        border-bottom: none;
+        z-index: 10;
+        border-left: #fff;
+      }
+    }
+    .registerForm {
+      position: relative;
+      bottom: 0.5208vw;
+      margin: 0 auto;
+      padding: 0 1.8229vw;
+      width: 24.79vw;
+      border: 0.0521vw solid nth($gray, 2);
+      // border-top: none; 
+
+      background-color: #fff;
+      border-radius: 0.5208vw;
+      padding-bottom: 2.25vw;
+      label {
+        display: block;
+        text-align: left;
+        font-size: 0.8333vw;
+        margin-bottom: 0.5208vw;
+        color: nth($gray, 1);
+        &.id {
+          margin-top: 2.6042vw;
+        }
+        &.nameLabel {
+          margin-top: 2.6042vw;
+        }
+      }
+      input:focus {
+        outline: none;
+      }
+      input {
+        padding: 0;
+        padding-left: 0.8333vw;
+        font-size: 0.8333vw;
+        border-radius: 0.2604vw;
+        border: 0.0521vw solid nth($gray, 2);
+        height: 2.6823vw;
+        margin-bottom: 0.6250vw;
+        &:focus,
+        &:active {
+          border-color: $green;
+        }
+        &#id {
+          width: 17.0573vw;
+          margin-right: 0.6250vw;
+        }
+        &#pw,
+        &#checkPw,
+        &#name {
+          width: 24.0365vw;
+        }
+        &#name,
+        &#lastNumber {
+          margin-bottom: 0.8333vw;
+        }
+      }
+      .inpPw {
+        $c: &;
+        position: relative;
+        & .pwWrong {
+          font-size: 0.8333vw;
+          text-align: start;
+          color: #eb5757;
+          margin-bottom: 0.7292vw;
+          #{c} input {
+            border-color: red;
+          }
+        }
+      }
+      img {
+        position: absolute;
+        width: 1.4583vw;
+        height: 1.4583vw;
+        right: 0.8vw;
+        top: 0.709vw;
+      }
+      button {
+        color: #fff;
+        background-color: $green;
+        width: 6.3542vw;
+        height: 2.8125vw;
+        font-size: 0.8333vw;
+        border-radius: 0.2604vw;
+      }
+      .phoneNumber {
+        display: flex;
+        input {
+          text-align: center;
+          padding: 0 0.0417vw;
+          width: 6.9531vw;
+        }
+        #middleNumber {
+          margin: 0 0.6250vw;
+        }
+        .firstNumBtn {
+          position: relative;
+          width: 100%;
+          color: #000;
+          background-color: #fff;
+          border: 0.0521vw solid nth($gray, 2);
+          font-size: 0.8333vw;
+          padding-right: 1.3021vw;
+          &::after {
+            content: "";
+            position: absolute;
+            right: 0.9677vw;
+            top: 1.2630vw;
+            width: 0.4167vw;
+            height: 0.4167vw;
+            border-radius: 0.0521vw;
+            transition: all 0.5s;
+            border: solid nth($gray, 1);
+            border-width: 0 0.1302vw 0.1302vw 0;
+            transform: rotate(225deg);
+          }
+          &.on::after {
+            transform: rotate(45deg);
+          }
+        }
+        #firstNumber {
+          position: absolute;
+          margin-top: 3.1250vw;
+          width: 7.9167vw;
+          height: 7.8125vw;
+          overflow-y: scroll;
+          border-radius: 0.2604vw;
+          border: 0.0521vw solid nth($gray, 2);
+          button {
+            width: 100%;
+            color: #000;
+            background-color: #fff;
+            border-radius: 0;
+            height: 2.0833vw;
+          }
+        }
+      }
+      .numWrong {
+        text-align: start;
+        color: #eb5757;
+        font-size: 0.8333vw;
+        margin-bottom: 0.7292vw;
+      }
+
+      .email {
+        .emailInp {
+          display: flex;
+          align-items: center;
+          input {
+            width: 10.3948vw;
+            margin-bottom: 0;
+          }
+          span {
+            font-size: 0.8333vw;
+            margin: 0 0.5vw;
+          }
+        }
+      }
+
+      .buyerNum {
+        margin-top: 1.9792vw;
+        #bNum {
+          width: 16.7458vw;
+          margin-right: 0.6250vw;
+        }
+      }
+      #storeName {
+        width: 24.0365vw;
+      }
+    }
+    .box-check {
+      display: flex;
+      justify-content: center;
+      .check-agree {
+        display: flex;
+        width: 26vw;
+        margin-top: 1.7708vw;
+        text-align: left;
+        font-size: 0.8333vw;
+
+        input[type="checkbox"] {
+          cursor: pointer;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          outline: 0;
+          height: 3.8333vw;
+          width: 3.8333vw;
+          border: 0.0521vw solid nth($gray, 2);
+        }
+        input[type="checkbox"]:checked {
+          border: 0.0521vw solid $green;
+        }
+        input[type="checkbox"]:hover {
+          border: 0.0521vw solid $green;
+        }
+        input[type="checkbox"]:after {
+          content: "";
+          position: relative;
+          left: 40%;
+          top: 20%;
+          width: 15%;
+          height: 40%;
+          border: solid $green;
+          border-width: 0 0.1042vw 0.1042vw 0;
+          transform: rotate(45deg);
+          display: none;
+        }
+        input[type="checkbox"]:checked:after {
+          display: block;
+        }
+
+        #agree {
+          display: block;
+          width: 0.8333vw;
+          height: 0.8333vw;
+          margin-right: 0.5208vw;
+          margin-top: 0.0521vw;
+        }
+        label {
+          color: nth($gray, 1);
+          strong {
+            font-family: $f5;
+            text-decoration: underline;
+            text-underline-position: under;
+          }
+        }
+      }
+    }
+
+    .submitBtn {
+      background-color: $green;
+      color: #fff;
+      width: 25vw;
+      height: 3.1250vw;
+      margin: 1.7708vw 0 5.7292vw;
+      border-radius: 0.2604vw;
+      font-size: 0.9375vw;
+      font-family: $f5;
+      &:disabled {
+        background-color: nth($gray, 2);
+      }
+    }
+  }
+}
